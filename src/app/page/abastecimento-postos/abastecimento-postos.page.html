@@ -1,0 +1,55 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/new-home"
+        text=""
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+
+    <ion-title>Abastecimento em Postos</ion-title>
+    <ion-buttons slot="end">
+      <ion-button class="btn-novo" (click)="novo()" aria-label="Novo abastecimento">
+        NOVO
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <ion-item lines="none">
+      <ion-label position="stacked">Fornecedor</ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Equipamento</ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item lines="none" (click)="openCalendar($event, 'dataInicial')">
+      <ion-label position="stacked">Data Inicial</ion-label>
+      <ion-input readonly="true" [value]="formatDate(dataInicial)" placeholder="dd/mm/aaaa"></ion-input>
+      <ion-icon name="calendar-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none" (click)="openCalendar($event, 'dataFinal')">
+      <ion-label position="stacked">Data Final</ion-label>
+      <ion-input readonly="true" [value]="formatDate(dataFinal)" placeholder="dd/mm/aaaa"></ion-input>
+      <ion-icon name="calendar-outline" slot="end"></ion-icon>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Número Voucher</ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="button-container">
+    <ion-button expand="block" class="btn-pesquisar" (click)="pesquisar()">
+      PESQUISAR
+    </ion-button>
+  </div>
+</ion-content>

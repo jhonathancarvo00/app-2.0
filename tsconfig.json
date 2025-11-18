@@ -1,0 +1,47 @@
+/* To learn more about this file see: https://angular.io/config/tsconfig. */
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "baseUrl": "./",
+    "outDir": "./dist/out-tsc",
+    "sourceMap": true,
+    "declaration": false,
+    "downlevelIteration": true,
+    "experimentalDecorators": true,
+    "moduleResolution": "node",
+    "importHelpers": true,
+    "target": "ES2022",
+    "module": "es2020",
+    "lib": [
+      "es2020",
+      "ES2020.Intl",
+      "dom"
+    ],
+    "paths": {
+      "@core/*": [
+        "src/app/core/*"
+      ],
+      "@services/*": [
+        "src/app/shared/services/*"
+      ],
+      "@components/*": [
+        "src/app/shared/components/*"
+      ],
+      "@environment/*": [
+        "src/environments/*"
+      ],
+      "@assets/*": [
+        "src/assets/*"
+      ]
+    },
+    "useDefineForClassFields": false
+  },
+
+
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  }
+}

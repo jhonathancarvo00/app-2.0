@@ -1,0 +1,95 @@
+
+:host {
+  ion-content {
+    --background: #F4F7FA;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #F4F7FA;
+    ion-title, ion-back-button {
+      color: #023A51;
+    }
+  }
+}
+
+
+.form-container {
+  background: #ffffff;
+  margin: 16px;
+  padding: 20px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+
+
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --border-width: 0;
+  margin-bottom: 20px;
+
+  ion-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #023A51;
+    margin-bottom: 8px;
+  }
+
+  ion-input, ion-select {
+    --background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    width: 100%;
+    font-size: 16px;
+    color: #333;
+  }
+
+  ion-select {
+    --padding-top: 13px;
+    --padding-bottom: 13px;
+  }
+
+  &.item-has-focus ion-input,
+  &.item-has-focus ion-select {
+    border-color: #5298FF;
+  }
+}
+
+
+ion-grid ion-col {
+  padding-left: 0;
+  padding-right: 0;
+  &:first-child {
+    padding-right: 8px;
+  }
+  &:last-child {
+    padding-left: 8px;
+  }
+}
+
+ion-grid ion-row ion-col:not(:first-child):not(:last-child) {
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+.button-container {
+  padding: 8px 16px 16px 16px;
+  background: #F4F7FA;
+}
+
+.btn-confirmar {
+  --background: #E9F2FF;
+  --background-activated: #d8e6fa;
+  color: #5298FF;
+  --border-radius: 25px;
+  --box-shadow: none;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}

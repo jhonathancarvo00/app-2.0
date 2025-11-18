@@ -1,0 +1,38 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/ordem-servico-edicao"
+        text=""
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Ordem Serviço - Fotos - Nova Foto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card class="foto-card">
+    <ion-card-content>
+
+      <ion-button expand="block" class="btn-localizar" (click)="localizarFoto()">
+        Localizar Foto
+      </ion-button>
+
+      <ion-item lines="none" class="ion-margin-top foto-item">
+        <ion-label position="stacked">Foto</ion-label>
+
+        <div class="preview" [class.vazio]="!fotoPath">
+          <img *ngIf="fotoPath" [src]="fotoPath" alt="Pré-visualização da foto" />
+        </div>
+      </ion-item>
+
+    </ion-card-content>
+  </ion-card>
+
+  <div class="ion-padding">
+    <ion-button expand="block" class="btn-confirmar" (click)="confirmarInclusao()">
+      Confirmar Inclusão de Foto
+    </ion-button>
+  </div>
+</ion-content>

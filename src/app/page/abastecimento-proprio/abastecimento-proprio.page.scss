@@ -1,0 +1,91 @@
+:host {
+  ion-content {
+    --background: #F4F7FA;
+  }
+}
+
+ion-header {
+  ion-toolbar {
+    --background: #F4F7FA;
+    ion-title, ion-back-button {
+      color: #023A51;
+    }
+  }
+  .btn-nova {
+    --background: #e9edf1;
+    --color: #023A51;
+    --border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    height: 32px;
+    margin-right: 8px;
+  }
+}
+.form-container {
+  background: #ffffff;
+  margin: 16px;
+  padding: 20px 16px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
+}
+ion-item {
+  --background: transparent;
+  --padding-start: 0;
+  --inner-padding-end: 0;
+  --border-width: 0;
+  margin-bottom: 20px;
+
+  ion-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #023A51;
+    margin-bottom: 8px;
+  }
+
+  ion-input {
+    --background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    --padding-start: 12px;
+    --padding-end: 12px;
+    font-size: 16px;
+    color: #333;
+  }
+
+  &.item-has-focus ion-input {
+    border-color: #5298FF;
+  }
+}
+
+.button-container {
+  padding: 8px 16px 16px 16px;
+  background: #F4F7FA;
+}
+
+.btn-pesquisar {
+  --background: #E9F2FF;
+  --background-activated: #d8e6fa;
+  color: #5298FF;
+  --border-radius: 25px;
+  --box-shadow: none;
+  height: 50px;
+  font-size: 16px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+ion-item {
+  position: relative;
+
+  ion-icon[name="calendar-outline"] {
+    position: absolute;
+    right: 12px;
+    top: 55%;
+    transform: translateY(-50%);
+    color: #8c8c8c;
+  }
+
+  ion-input[readonly] {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,88 @@
+<ion-header >
+  <ion-toolbar lines="none">
+    <ion-icon src="../../assets/icon/arrow.svg" class="ion-padding"slot="start" (click)="dismiss()"></ion-icon>
+    <ion-title class="ion-text-center">
+      Itens disponiveis
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<form id="requestForm" [formGroup]="reqForm"  style="height: 100%;background-color: white;justify-content: center;" >
+  <div class="statusDiv">
+    <p>Requisição Nº: <span>{{requisicaoCod}}</span></p>
+  </div>
+  <app-qr-scanner (qrCodeLido)="buscaInsumoQrCode($event)"></app-qr-scanner>
+
+
+
+  <ion-grid  class="no-padding-bottom no-padding-top" style="justify-content: center;">
+    <ion-row class="ion-justify-content-center corpo"  *ngIf="load">
+        <app-spinner [showSpinner]="!load" *ngIf="!load"></app-spinner>
+
+        <!--<ion-col size=11>
+          <div class="statusDiv">
+            <p>Requisição Nº: <span>{{requisicaoCod}}</span></p>
+          </div>
+        </ion-col>-->
+        <ion-col  size="11" >
+
+          <ion-row class="desc">
+
+          </ion-row>
+          <app-input-search #equipamentoLookup
+            label="Equipamento"
+            formName="req"
+            [pesquisa]="pesquisaEqp"
+            placeholder="Equipamento"
+            [parentForm]="reqForm"
+            [itemTemplate]="templateEquipamento"
+            controlName="item"
+            (itemSelecionado)="comboSelecionada($event)"
+
+            [nomeUrlDados]="getEnumName()" ngDefaultControl></app-input-search>
+          <ng-template #templateEquipamento let-item>
+            <!-- Personalize a apresentação do item aqui -->
+            <ion-item style="color: black;">
+                <ion-col size="11">
+                  <b style="font-size: 12px;">{{item.descricao}}
+                    <br />
+                    <span style="font-size: 12px;font-weight: lighter; ">Saldo disponivel: {{
+                      item.saldoEquipamento}}</span>
+                  </b>
+                </ion-col>
+            </ion-item>
+          </ng-template>
+        </ion-col>
+          <ion-col size="11">
+            <ion-row>
+              <ion-col size="4" style="align-self: end"><span>Quantidade:</span></ion-col>
+              <ion-col size="3">
+                <ion-item style=" text-align: center; color: black; border-top-width: 200px;  ">
+                  <ion-input name="qtdGeral" style="background: #fff;
+                                            color: #000000;
+                                            --placeholder-color: #ddd;
+                                            --border-color: #9d2525;
+                                            --border-style:dashed;
+                                            --border-width: 10px;" formName="req" type="number" formControlName="quantidade"
+                    controlName="quantidade" ngDefaultControl></ion-input>
+                </ion-item>
+              </ion-col>
+              <ion-col size="2">
+                <ion-item>
+                  <ion-label>{{qtdMaxima}}</ion-label>
+                </ion-item>
+              </ion-col>
+            </ion-row>
+          </ion-col>
+        <ion-col size="11">
+          <ion-row class="ion-justify-content-center">
+            <ion-col size="10">
+              <ion-button class="btnRedondo btnVoltar" (click)="sendPostItem()"  expand="block"><ion-ripple-effect type="unbounded"></ion-ripple-effect>Adicionar item</ion-button>
+            </ion-col>
+          </ion-row>
+        </ion-col>
+
+    </ion-row>
+  </ion-grid>
+</form>
+

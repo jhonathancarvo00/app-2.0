@@ -1,0 +1,157 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/abastecimento-postos"
+        text=""
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Abastecimento em Postos - Edição</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <ion-item lines="none">
+      <ion-label position="stacked">Equipamento</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Empreendimento</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Empresa</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <!-- Novo Campo Fornecedor -->
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Fornecedor</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Centro de despesas</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Etapa</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Insumo</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Observação</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Número Voucher</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Pesquisa Número Voucher</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Quantidade Solicitada</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Valor Solicitado</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Bloco</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <h4 class="section-title">Dados de Retorno</h4>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col size="4">
+          <ion-item lines="none" (click)="openCalendar($event, 'dtRetirada')">
+            <ion-label position="stacked">Dt.Retirada</ion-label>
+            <ion-input readonly="true" [value]="formatDate(dtRetirada)" placeholder="dd/mm/aaaa"></ion-input>
+            <ion-icon name="calendar-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item lines="none">
+            <ion-label position="stacked">Qtd. Retirada</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col size="4">
+          <ion-item lines="none">
+            <ion-label position="stacked">Total</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none" (click)="openCalendar($event, 'hodometroData')">
+            <ion-label position="stacked">Hodômetro</ion-label>
+            <ion-input readonly="true" [value]="formatDate(hodometroData)" placeholder="dd/mm/aaaa"></ion-input>
+            <ion-icon name="calendar-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Horímetro</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none" (click)="openCalendar($event, 'nCtlPostoData')">
+            <ion-label position="stacked">Nº Ctrl Posto</ion-label>
+            <ion-input readonly="true" [value]="formatDate(nCtlPostoData)" placeholder="dd/mm/aaaa"></ion-input>
+            <ion-icon name="calendar-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="button-container">
+    <ion-button expand="block" class="btn-confirmar" (click)="confirmar()">
+      CONFIRMAR
+    </ion-button>
+  </div>
+</ion-content>

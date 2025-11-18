@@ -1,0 +1,74 @@
+<ion-header>
+  <ion-toolbar lines="none">
+    <ion-grid>
+      <ion-row class="ion-justify-content-center">
+        <ion-col size="7">
+          <div class="logo">
+            <img id="logo-login" src="../../assets/whiteLogo.svg" />
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+  <ion-grid class="ion-no-padding position-relative" style="height: 80px;">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="12" size-md="5" style="padding-right: 10px; padding-left: 10px;">
+        <ion-button class="btnGreen ion-text-capitalize" expand="block" (click)="newRequest()">
+          Requisição de Compra
+        </ion-button>
+      </ion-col>
+      <ion-col size="12" size-md="5" style="padding-left: 10px; padding-right: 10px; margin-top: 8px; margin-top: 0px;">
+        <ion-button class="btnGreen ion-text-capitalize" expand="block" (click)="goEstoque()">
+          Estoque
+        </ion-button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div style="height: 80px;"></div>
+
+  <ion-grid class="principalDiv">
+    <app-spinner [showSpinner]="!load" *ngIf="!load"></app-spinner>
+
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11" @hideShowAnimator *ngIf="load">
+        <ion-row>
+          <ion-col size="9" *ngIf="listReq.length > 0">
+            <p class="ion-margin-vertical">{{ statusRequisicao | statusMoment }}</p>
+          </ion-col>
+
+          <ion-col size="3">
+            <p class="ion-margin-vertical ion-text-right filter-p" (click)="showFIlters = !showFIlters">
+              Filtros <ion-icon name="chevron-down-outline" [@rotatedState]="showFIlters"></ion-icon>
+            </p>
+          </ion-col>
+
+          <ion-col size="12" *ngIf="listReq.length === 0">
+            <p class="ion-margin-vertical">Nenhuma requisição encontrada</p>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+
+      <ion-col size="11" @hideShowAnimator *ngIf="showFIlters && (load && !!listReq)">
+        <app-filter-req
+          [empreendimento]="empreendimento"
+          [statusRequisicao]="statusRequisicao"
+          [dataInicial]="dataInicial"
+          (setParams)="setParams($event)"
+          [dataFinal]="dataFinal">
+        </app-filter-req>
+      </ion-col>
+
+      <ion-col size="11" *ngIf="!showFIlters && load">
+        <list-request-component
+          [item]="item"
+          [loaded]="load"
+          *ngFor="let item of listReq; let i = index">
+        </list-request-component>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+

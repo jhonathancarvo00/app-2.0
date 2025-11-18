@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/ordem-servico" text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ordem Serviço - Pesquisa</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let item of resultados">
+    <ion-card-content>
+      <ion-grid class="ion-no-padding">
+        <ion-row class="ion-align-items-start">
+          <ion-col size="6">
+            <p class="label"><strong>OS: </strong> <span class="value">{{ item.os }}</span></p>
+          </ion-col>
+          <ion-col size="6" class="ion-text-end">
+            <p class="status"><strong>{{ item.status }}</strong></p>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <p class="label"><strong>Descrição: </strong><span class="value">{{ item.descricao }}</span></p>
+          </ion-col>
+        </ion-row>
+
+        <p class="label"><strong>Empreendimento: </strong><span class="value">{{ item.empreendimento }}</span></p>
+        <p class="label"><strong>Equipamento: </strong><span class="value">{{ item.equipamento }}</span></p>
+        <p class="label"><strong>Operador / Motorista: </strong><span class="value">{{ item.operador }}</span></p>
+        <p class="label"><strong>Manutentor: </strong><span class="value">{{ item.manutentor }}</span></p>
+
+        <ion-row>
+          <ion-col>
+            <p class="label"><strong>Data Abertura: </strong><span class="value">{{ item.dataAbertura }}</span></p>
+          </ion-col>
+          <ion-col class="ion-text-end">
+            <p class="label"><strong>Data Conclusão: </strong><span class="value">{{ item.dataConclusao }}</span></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+
+    <div class="details-button-container">
+      <ion-button fill="clear" expand="block" class="details-button"
+                  (click)="abrirDetalhe(item)">
+        VER DETALHES
+      </ion-button>
+    </div>
+  </ion-card>
+</ion-content>

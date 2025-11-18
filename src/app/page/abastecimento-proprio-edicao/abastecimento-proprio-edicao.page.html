@@ -1,0 +1,186 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button
+        defaultHref="/tabs/abastecimento-proprio-pesquisa"
+        text=""
+        icon="chevron-back-outline">
+      </ion-back-button>
+    </ion-buttons>
+    <ion-title>Abastecimento Próprio - Edição</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+
+    <!--CAMPO QUE FOI PEDIDO PARA TIRAR NA NOSSA SEGUNDA REUNIÃO-->
+    
+   <!--<ion-item lines="none">
+      <ion-label position="stacked">Requisição</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item> -->
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Origem / Tanque</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Equipamento</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Data</ion-label>
+      <ion-input type="text" placeholder="dd/mm/aaaa"></ion-input>
+    </ion-item>
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Bomba / Bico</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Destino</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Empreendimento</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Etapa</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Odômetro Atual</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Odômetro Abastecimento</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Horímetro Atual</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Horímetro</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Insumo</ion-label>
+      <ion-select placeholder="Selecione"></ion-select>
+    </ion-item>
+
+    <!--NOVOS CAMPOS -->
+
+    <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Troca/ Reposição</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Aplicação</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+
+
+
+
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Quantidade</ion-label>
+            <ion-input type="number" value="62,000"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">No.Bomba Inicial</ion-label>
+            <ion-input type="number" value="255867,8"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">No.Bomba Final</ion-label>
+            <ion-input type="number" value="255929,8"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Motorista / Operador</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Colaborador / Frentista</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Hora Abastecimento</ion-label>
+            <ion-input type="time"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Bloco</ion-label>
+            <ion-select placeholder="Selecione"></ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Observação</ion-label>
+      <ion-input type="text"></ion-input>
+    </ion-item>
+  </div>
+
+  <div class="button-container">
+    <ion-button expand="block" class="btn-confirmar" (click)="onConfirmar()">
+      Confirmar
+    </ion-button>
+  </div>
+</ion-content>

@@ -1,0 +1,52 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar lines="none">
+    <ion-grid>
+      <ion-row class="header-row ion-align-items-center">
+        <!-- Hamburguer -->
+        <ion-col size="auto" class="menu-trigger">
+          <menu-root contentId="frotas-content"></menu-root>
+        </ion-col>
+
+        <!-- Logo centralizada -->
+        <ion-col>
+          <div class="logo">
+            <img id="logo-login" src="../../assets/whiteLogo.svg" />
+          </div>
+        </ion-col>
+
+        <!-- placeholder para balancear o grid -->
+        <ion-col size="auto" class="menu-placeholder">
+          <ion-icon name="menu" style="visibility: hidden;" class="ion-padding"></ion-icon>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" id="frotas-content">
+  <ion-grid class="btn-area">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="11" sizeMd="8" sizeLg="6">
+        <ion-row class="ion-justify-content-center ion-align-items-center">
+          <ion-col size="12" sizeSm="6">
+            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goOrdemServico()">
+              Ordem de Serviço
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="12" sizeSm="6">
+            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goAbastecimento()">
+              Abastecimento
+            </ion-button>
+          </ion-col>
+
+          <ion-col size="12" sizeSm="6">
+            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goEstoque()">
+              Estoque
+            </ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

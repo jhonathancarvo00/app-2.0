@@ -1,0 +1,128 @@
+<ion-header class="ion-no-border">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="/tabs/ordem-servico-pesquisa" text="" icon="chevron-back-outline"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Ordem Serviço - Edição</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="form-container">
+    <ion-item lines="none">
+      <ion-label position="stacked">Número Ordem Serviço</ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Descrição</ion-label>
+      <ion-input type="text" placeholder=""></ion-input>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Equipamento</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="equip1">Equipamento 1</ion-select-option>
+        <ion-select-option value="equip2">Equipamento 2</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Empreendimento</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="emp1">Empreendimento 1</ion-select-option>
+        <ion-select-option value="emp2">Empreendimento 2</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <ion-grid class="ion-no-padding">
+      <ion-row>
+        <ion-col>
+          <ion-item lines="none" (click)="openCalendar($event, 'dataAbertura')">
+            <ion-label position="stacked">Data Abertura</ion-label>
+            <ion-input readonly="true" [value]="formatDate(dataAbertura)" placeholder="dd/mm/aaaa"></ion-input>
+            <ion-icon name="calendar-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none" (click)="openCalendar($event, 'dataConclusao')">
+            <ion-label position="stacked">Data Conclusão</ion-label>
+            <ion-input readonly="true" [value]="formatDate(dataConclusao)" placeholder="dd/mm/aaaa"></ion-input>
+            <ion-icon name="calendar-outline" slot="end"></ion-icon>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Classificação</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="class1">Classificação 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Tipo</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="tipo1">Tipo 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Causa da Intervenção</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="causa1">Causa 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Operador / Motorista</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="op1">Operador 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Empreendimento da Intervenção</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="emp_int1">Empreendimento Intervenção 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+    
+    <!--Novos Campos-->
+
+     <ion-row>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Hodômetro</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item lines="none">
+            <ion-label position="stacked">Horímetro</ion-label>
+            <ion-input type="number"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Status</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="status1">Status 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+
+    <ion-item lines="none">
+      <ion-label position="stacked">Manutentor</ion-label>
+      <ion-select placeholder="Selecione">
+        <ion-select-option value="man1">Manutentor 1</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </div>
+  
+  <div class="button-container">
+    <ion-button fill="clear" class="btn-next" (click)="proximaEtapa()">
+      <ion-icon slot="icon-only" name="arrow-forward-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>

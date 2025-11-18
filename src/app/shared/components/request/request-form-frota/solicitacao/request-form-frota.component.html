@@ -1,0 +1,68 @@
+<form id="requestForm" [formGroup]="reqForm">
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="11" class="no-padding-top">
+      <ion-item  lines="none" class="box">
+        <app-input-search label="Empreendimentos" [disabledInput]="validReqId" formName="req" [pesquisa]="{pesquisa: ''}" [listItemFilter]="listItemFilter.filteredOptionsEmpreendimento" placeholder="Código da obra" [parentForm]="reqForm" controlName="empreendimentoId" ngDefaultControl></app-input-search>
+      </ion-item>
+    </ion-col>
+
+    <ion-col size="11" class="no-padding-top" *ngIf="hasValueEmpreendimento">
+      <ion-item lines="none" class="box ion-margin-vertical">
+        <app-input-search   label="Código da Empresa" formName="req" [pesquisa]="{pesquisa: '',empreendimentoId:empreendimentoIdValue}" [listItemFilter]="listItemFilter.EmpresasDoEmpreendimento" [parentForm]="reqForm" controlName="empresaId" ngDefaultControl></app-input-search>
+      </ion-item>
+    </ion-col>
+
+    <ion-row class="ion-justify-content-center" *ngIf="mostrarLeitorQrCode">
+      <ion-col size="11" class="no-padding-top">
+        <app-qr-scanner (qrCodeLido)="buscarColaboradorScan($event)" caption="Ler QRCODE Colaborador"></app-qr-scanner>
+
+      </ion-col>
+    </ion-row>
+
+    <ion-col size="11" class="no-padding-top" *ngIf="digitacaoColaborador && colabViaQrCode">
+      <ion-item  lines="none" class="box">
+        <ion-label position="floating" *ngIf="colabViaQrCode">Colaborador</ion-label>
+        <ion-input placeholder="Leia o código do colaborador" readonly [value]="nomeColaborador"/>
+      </ion-item>
+    </ion-col>
+    <ion-col size="11" class="no-padding-top" *ngIf="digitacaoColaborador && !colabViaQrCode">
+      <ion-item  lines="none" class="box">
+        <app-input-search label="Colaborador" [disabledInput]="validReqId" formName="req"
+        [pesquisa]="{pesquisa: '',colaboradorCod: colaboradorIdValue}"
+        placeholder="Nome do colaborador" [parentForm]="reqForm" controlName="colaboradorCod" ngDefaultControl></app-input-search>
+      </ion-item>
+    </ion-col>
+    <ion-col size="11" class="no-padding-top" *ngIf="rota !== 'epi'" >
+      <ion-item lines="none">
+        <ion-label  position="floating">Data da Solicitação</ion-label>
+        <div class="calendar grid-item" (click)="dataInicial.click()"  style="width: 100%;">
+          <ion-input [value]="_dataInicio | momentPipe"  formName="req" readonly  style="text-align: left;"></ion-input>
+          <ion-icon src="../../assets/icon/calendar.svg"  ></ion-icon>
+        </div>
+      </ion-item>
+
+
+      <div id="date-inicio" #dataInicial  >
+        <ion-popover trigger="date-inicio" alignment="center" :show-backdrop="true" size="cover" side="top">
+          <ng-template>
+            <ion-datetime presentation="date" locale="pt-BR" [showDefaultButtons]="true"
+              picker-format="MMMM dd, yyyy"
+              display-format="MM/dd/yyyy"
+              formControlName="dataInicio" done-text="Confirmar"
+              cancel-text="cancelar">
+            </ion-datetime>
+          </ng-template>
+        </ion-popover>
+      </div>
+    </ion-col>
+
+
+    <ion-col size="11" >
+      <ion-button class="btnRedondo btnVoltar"  expand="block" (click)="sendForm()" [disabled]="!hasValidForm || sendLoading">
+        <ion-ripple-effect type="unbounded"></ion-ripple-effect>
+        <ion-spinner name="crescent" *ngIf="sendLoading"></ion-spinner>
+        {{!sendLoading ? 'Confirmar' :'' }}
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</form>
