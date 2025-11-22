@@ -11,16 +11,18 @@ export class AbastecimentoPage {
 
   constructor(private router: Router) {}
 
-  /**
-   * Navega para a página de destino com base no botão clicado.
-   * @param destino A rota para a qual navegar (ex: 'abastecimento-proprio').
-   */
-  navegarPara(destino: string) {
-    console.log(`Navegando para: /tabs/${destino}`);
-    this.router.navigate([`/tabs/${destino}`]);
+  // Abastecimento Próprio -> tela de pesquisa / filtro
+  goAbastecimentoProprio() {
+    this.router.navigate(['/tabs/abastecimento-proprio']);
   }
 
+  // Abastecimento em Postos
+  goAbastecimentoPostos() {
+    this.router.navigate(['/tabs/abastecimento-postos']);
+  }
+
+  // Voltar para o menu de frotas (ajuste se quiser outro destino)
   voltar() {
-    this.router.navigate(['/tabs/new-home']);
+    this.router.navigate(['/tabs/frotas-home']);
   }
 }

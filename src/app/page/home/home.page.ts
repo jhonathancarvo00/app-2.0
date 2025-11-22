@@ -30,6 +30,12 @@ export class homePage {
   dataInicial = new Date(Date.now() - 10 * 24 * 60 * 60 * 1000);
   dataFinal = new Date(Date.now() + 1 * 24 * 60 * 60 * 1000);
 
+  /** 
+   * false = tela só com os dois botões (Requisição / Estoque)
+   * true  = tela com "Nova Requisição" + lista
+   */
+  showReqList = false;
+
   constructor(
     private router: Router,
     private rquestService: RequestService,
@@ -38,26 +44,38 @@ export class homePage {
 
   ngAfterViewInit() { }
 
-  // Helper functions
+  // Helper
   get validReqId() {
     return this.store.selectSnapshot(ReqState.validReqId);
   }
 
   ionViewDidEnter() {
     console.log('ionViewDidEnter');
-    this.getReq();
+    // Só carrega as requisições quando estiver na tela de lista
+    if (this.showReqList) {
+      this.getReq();
+    }
   }
 
   ionViewWillEnter() {
     console.log('ionViewWillEnter');
+    // Ao entrar vindo do menu "Obras", garante que volte para os 2 botões
+    this.showReqList = false;
   }
 
   ngOnInit() {
     console.log('ngOnInit');
-    // this.getReq()
   }
 
-  // === Botões da barra de ações ===
+  // ========= Fluxo de navegação =========
+
+  /** Botão "Requisição de Compra" (tela de Obras) */
+  goToReqListFromMenu() {
+    this.showReqList = true;
+    this.getReq();
+  }
+
+  /** Botão "Nova Requisição" (já dentro da tela de lista) */
   newRequest() {
     if (this.validReqId) {
       this.store.dispatch(new ResetStateInsumos());
@@ -66,11 +84,12 @@ export class homePage {
     this.router.navigate(['tabs/central-req/nova-req']);
   }
 
-  // NOVO: navegação para o módulo de Estoque (usado no novo botão)
+  /** Botão "Estoque" (tela de Obras) */
   goEstoque() {
     this.router.navigate(['/tabs/home-estoque']);
   }
 
+  // Mantive os métodos de frota, se ainda forem usados em outro lugar
   newRequestFrota() {
     if (this.validReqId) {
       this.store.dispatch(new ResetStateInsumos());
@@ -90,6 +109,8 @@ export class homePage {
   viewAllRequest() {
     this.router.navigate(['tabs/all-request']);
   }
+
+  // ========= Filtros / busca de requisições =========
 
   setParams(params) {
     this.showFIlters = false;

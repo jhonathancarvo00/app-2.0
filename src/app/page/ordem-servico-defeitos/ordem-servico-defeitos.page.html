@@ -1,18 +1,30 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/ordem-servico-edicao" text="" icon="chevron-back-outline"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Ordem Serviço - Edição</ion-title>
-  </ion-toolbar>
-  <ion-toolbar>
-    <ion-segment [(ngModel)]="segmentoAtivo" (ionChange)="segmentoMudou($event)">
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- Casinha -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Ordem de Serviço - Edição</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
+
+    <!-- Abas -->
+    <ion-segment
+      class="os-segment"
+      [value]="segment"
+      (ionChange)="changeSegment($event)"
+    >
       <ion-segment-button value="defeitos">
-        <ion-label>DEFEITOS/CAUSAS</ion-label>
+        <ion-label>DEFEITOS/<br>CAUSAS</ion-label>
       </ion-segment-button>
+
       <ion-segment-button value="observacao">
         <ion-label>OBSERVAÇÃO</ion-label>
       </ion-segment-button>
+
       <ion-segment-button value="fotos">
         <ion-label>FOTOS</ion-label>
       </ion-segment-button>
@@ -20,50 +32,92 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="form-container" *ngIf="segmentoAtivo === 'defeitos'">
-    <ion-item lines="none">
-      <ion-label position="stacked">Defeitos Constatados</ion-label>
-      <ion-textarea rows="5" placeholder="Digite aqui..."></ion-textarea>
-    </ion-item>
+<ion-content class="os-content">
+  <div class="os-page">
+    <div class="os-card">
+      <!-- SWITCH ENTRE AS ABAS -->
+      <ng-container [ngSwitch]="segment">
+        <!-- DEFEITOS / CAUSAS -->
+        <ng-container *ngSwitchCase="'defeitos'">
+          <div class="os-field">
+            <label class="os-label">Defeitos Constatados</label>
+            <ion-textarea
+              class="os-textarea"
+              placeholder="Digite aqui..."
+            ></ion-textarea>
+          </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Causas Prováveis</ion-label>
-      <ion-textarea rows="5" placeholder="Digite aqui..."></ion-textarea>
-    </ion-item>
-  </div>
+          <div class="os-field">
+            <label class="os-label">Causas Prováveis</label>
+            <ion-textarea
+              class="os-textarea"
+              placeholder="Digite aqui..."
+            ></ion-textarea>
+          </div>
 
-  <div class="form-container" *ngIf="segmentoAtivo === 'observacao'">
-    <ion-item lines="none">
-      <ion-label position="stacked">Observação</ion-label>
-      <ion-textarea rows="12" placeholder="Digite a observação aqui..."></ion-textarea>
-    </ion-item>
-  </div>
+          <div class="os-actions">
+            <button
+              type="button"
+              class="os-primary-btn"
+              (click)="confirmar()"
+            >
+              CONFIRMAR
+            </button>
+          </div>
+        </ng-container>
 
+        <!-- OBSERVAÇÃO -->
+        <ng-container *ngSwitchCase="'observacao'">
+          <div class="os-field">
+            <label class="os-label">Observações</label>
+            <ion-textarea
+              class="os-textarea"
+              placeholder="Digite aqui..."
+            ></ion-textarea>
+          </div>
 
-  <div class="form-container" *ngIf="segmentoAtivo === 'fotos'">
-    <ion-grid class="ion-no-padding header-fotos">
-      <ion-row class="ion-justify-content-between ion-align-items-center">
-        <ion-col size="auto">
-          <ion-label>Fotos</ion-label>
-        </ion-col>
-        <ion-col size="auto">
-          <ion-button class="btn-nova-foto" (click)="tirarFoto()">Nova Foto</ion-button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+          <div class="os-actions">
+            <button
+              type="button"
+              class="os-primary-btn"
+              (click)="confirmar()"
+            >
+              CONFIRMAR
+            </button>
+          </div>
+        </ng-container>
 
-    <div class="lista-fotos">
-      <img *ngFor="let foto of fotos" [src]="foto.webviewPath || foto.filepath" />
-      <div *ngIf="fotos.length === 0" class="sem-fotos">
-        <p>Nenhuma foto adicionada.</p>
-      </div>
+        <!-- FOTOS -->
+        <ng-container *ngSwitchCase="'fotos'">
+          <!-- Título + botão Nova Foto -->
+          <div class="os-photos-header">
+            <div class="os-label">Fotos</div>
+
+            <button
+              type="button"
+              class="os-new-photo-btn"
+              (click)="goNovaFoto()"
+            >
+              Nova Foto
+            </button>
+          </div>
+
+          <!-- Lista de fotos (placeholders) -->
+          <div class="os-photo-box" *ngFor="let item of photos">
+            <span></span>
+          </div>
+
+          <div class="os-actions">
+            <button
+              type="button"
+              class="os-primary-btn"
+              (click)="confirmar()"
+            >
+              CONFIRMAR
+            </button>
+          </div>
+        </ng-container>
+      </ng-container>
     </div>
-  </div>
-
-  <div class="button-container">
-    <ion-button expand="block" class="btn-confirmar" (click)="confirmar()">
-      CONFIRMAR
-    </ion-button>
   </div>
 </ion-content>

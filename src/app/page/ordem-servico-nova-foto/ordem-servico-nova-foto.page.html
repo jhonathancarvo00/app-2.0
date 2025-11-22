@@ -1,38 +1,40 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/tabs/ordem-servico-edicao"
-        text=""
-        icon="chevron-back-outline">
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title>Ordem Serviço - Fotos - Nova Foto</ion-title>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      
+      <!-- Ícone de Voltar -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Ordem Serviço - Fotos</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card class="foto-card">
-    <ion-card-content>
 
-      <ion-button expand="block" class="btn-localizar" (click)="localizarFoto()">
+<ion-content class="os-content">
+
+  <div class="os-page">
+    <div class="os-card">
+
+      <button class="os-picker-btn" (click)="localizarFoto()">
         Localizar Foto
-      </ion-button>
+      </button>
 
-      <ion-item lines="none" class="ion-margin-top foto-item">
-        <ion-label position="stacked">Foto</ion-label>
+      <div class="os-field">
+        <label class="os-label">Foto</label>
+        <ion-textarea class="os-textarea" placeholder="Imagem carregada aqui..." readonly></ion-textarea>
+      </div>
 
-        <div class="preview" [class.vazio]="!fotoPath">
-          <img *ngIf="fotoPath" [src]="fotoPath" alt="Pré-visualização da foto" />
-        </div>
-      </ion-item>
+      <div class="os-actions">
+        <button type="button" class="os-primary-btn" (click)="confirmarFoto()">
+          CONFIRMAR INCLUSÃO DE FOTO
+        </button>
+      </div>
 
-    </ion-card-content>
-  </ion-card>
-
-  <div class="ion-padding">
-    <ion-button expand="block" class="btn-confirmar" (click)="confirmarInclusao()">
-      Confirmar Inclusão de Foto
-    </ion-button>
+    </div>
   </div>
 </ion-content>

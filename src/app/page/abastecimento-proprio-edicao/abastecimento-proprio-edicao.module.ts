@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+
 import { AbastecimentoProprioEdicaoPageRoutingModule } from './abastecimento-proprio-edicao-routing.module';
 import { AbastecimentoProprioEdicaoPage } from './abastecimento-proprio-edicao.page';
 
@@ -10,8 +11,8 @@ import { AbastecimentoProprioEdicaoPage } from './abastecimento-proprio-edicao.p
     CommonModule,
     FormsModule,
     IonicModule,
-    AbastecimentoProprioEdicaoPageRoutingModule
+    AbastecimentoProprioEdicaoPageRoutingModule,
   ],
-  declarations: [AbastecimentoProprioEdicaoPage]
+  declarations: [AbastecimentoProprioEdicaoPage],
 })
 export class AbastecimentoProprioEdicaoPageModule {}

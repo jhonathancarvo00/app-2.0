@@ -1,52 +1,89 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button defaultHref="/tabs/ordem-servico" text="" icon="chevron-back-outline"></ion-back-button>
-    </ion-buttons>
-    <ion-title>Ordem Serviço - Pesquisa</ion-title>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- Ícone casinha padrão -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Ordem de Serviço - Pesquisa</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor="let item of resultados">
-    <ion-card-content>
-      <ion-grid class="ion-no-padding">
-        <ion-row class="ion-align-items-start">
-          <ion-col size="6">
-            <p class="label"><strong>OS: </strong> <span class="value">{{ item.os }}</span></p>
-          </ion-col>
-          <ion-col size="6" class="ion-text-end">
-            <p class="status"><strong>{{ item.status }}</strong></p>
-          </ion-col>
-        </ion-row>
+<ion-content class="os-content">
+  <div class="os-page">
 
-        <ion-row>
-          <ion-col>
-            <p class="label"><strong>Descrição: </strong><span class="value">{{ item.descricao }}</span></p>
-          </ion-col>
-        </ion-row>
+    <!-- Lista de OS -->
+    <div
+      class="os-card"
+      *ngFor="let os of ordens"
+    >
+      <div class="os-card-header">
+        <div class="os-card-os">
+          OS: {{ os.numeroOs || os.id }}
+        </div>
+        <div class="os-card-status">
+          {{ os.statusTexto || 'Status' }}
+        </div>
+      </div>
 
-        <p class="label"><strong>Empreendimento: </strong><span class="value">{{ item.empreendimento }}</span></p>
-        <p class="label"><strong>Equipamento: </strong><span class="value">{{ item.equipamento }}</span></p>
-        <p class="label"><strong>Operador / Motorista: </strong><span class="value">{{ item.operador }}</span></p>
-        <p class="label"><strong>Manutentor: </strong><span class="value">{{ item.manutentor }}</span></p>
+      <div class="os-card-body">
 
-        <ion-row>
-          <ion-col>
-            <p class="label"><strong>Data Abertura: </strong><span class="value">{{ item.dataAbertura }}</span></p>
-          </ion-col>
-          <ion-col class="ion-text-end">
-            <p class="label"><strong>Data Conclusão: </strong><span class="value">{{ item.dataConclusao }}</span></p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
+        <div class="os-line">
+          <span class="os-label">Descrição:</span>
+          <span class="os-value">{{ os.descricao }}</span>
+        </div>
 
-    <div class="details-button-container">
-      <ion-button fill="clear" expand="block" class="details-button"
-                  (click)="abrirDetalhe(item)">
-        VER DETALHES
-      </ion-button>
+        <div class="os-line">
+          <span class="os-label">Empreendimento:</span>
+          <span class="os-value">{{ os.empreendimento }}</span>
+        </div>
+
+        <div class="os-line">
+          <span class="os-label">Equipamento:</span>
+          <span class="os-value">{{ os.equipamento }}</span>
+        </div>
+
+        <div class="os-line">
+          <span class="os-label">Operador / Motorista:</span>
+          <span class="os-value">{{ os.operador || os.operadorMotorista }}</span>
+        </div>
+
+        <div class="os-line">
+          <span class="os-label">Manutentor:</span>
+          <span class="os-value">{{ os.manutentor }}</span>
+        </div>
+
+        <div class="os-dates-row">
+          <div class="os-date-block">
+            <span class="os-label">Data Abertura:</span>
+            <span class="os-value">{{ os.dataAbertura }}</span>
+          </div>
+          <div class="os-date-block">
+            <span class="os-label">Data Conclusão:</span>
+            <span class="os-value">{{ os.dataConclusao }}</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="os-card-footer">
+        <button
+          type="button"
+          class="os-details-btn"
+          (click)="verDetalhes(os)"
+        >
+          VER DETALHES
+        </button>
+      </div>
     </div>
-  </ion-card>
+
+    <!-- Caso não tenha resultado -->
+    <div class="os-empty" *ngIf="ordens.length === 0">
+      Nenhuma ordem de serviço encontrada.
+    </div>
+
+  </div>
 </ion-content>

@@ -1,10 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-
-export interface Foto {
-  filepath: string;
-  webviewPath?: string;
-}
 
 @Component({
   standalone: false,
@@ -12,26 +7,31 @@ export interface Foto {
   templateUrl: './ordem-servico-defeitos.page.html',
   styleUrls: ['./ordem-servico-defeitos.page.scss'],
 })
-export class OrdemServicoDefeitosPage implements OnInit {
+export class OrdemServicoDefeitosPage {
 
-  segmentoAtivo: string = 'defeitos';
-  public fotos: Foto[] = [];
+  segment: 'defeitos' | 'observacao' | 'fotos' = 'defeitos';
+
+  // placeholders de fotos (pode trocar por objetos reais depois)
+  photos = [1, 2];
 
   constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.fotos = [];
+  onBack() {
+    // volta para a tela de edição principal de OS
+    this.router.navigate(['/tabs/ordem-servico-edicao']);
   }
 
-  segmentoMudou(event: any): void {
-    this.segmentoAtivo = event?.detail?.value ?? 'defeitos';
+  changeSegment(ev: any) {
+    this.segment = ev.detail.value;
   }
 
-  tirarFoto(): void {
-    this.router.navigate(['/tabs/ordem-servico-nova-foto']);
-  }
-
-  confirmar(): void {
+  confirmar() {
+    // Depois de confirmar, volta para a tela de pesquisa de OS
     this.router.navigate(['/tabs/ordem-servico-pesquisa']);
+  }
+
+  goNovaFoto() {
+    // Caminho correto conforme tabs-routing.module.ts
+    this.router.navigate(['/tabs/ordem-servico-nova-foto']);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   standalone: false,
@@ -9,47 +9,53 @@ import { Router } from '@angular/router';
 })
 export class AbastecimentoProprioPesquisaPage implements OnInit {
 
-  resultados: Array<{
-    id: number;
-    numero: string;
-    empreendimento: string;
-    equipamento: string;
-    bombaBico: string;
-    destino: string;
-    data: string;
-    observacao: string;
-    status: 'Concluida' | 'Não concluída';
-  }> = [];
+  // lista exibida na tela
+  lista: any[] = [];
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
-  ngOnInit(): void {
-    this.resultados = [
-      {
-        id: 13763,
-        numero: '13763',
-        empreendimento: '900',
-        equipamento: 'fdjskf jksdjf',
-        bombaBico: '3 | Tanque Itaqua',
-        destino: 'EQ | Equipamento',
-        data: '99/99/9999',
-        observacao: 'CAM. BASCULANTE GBP-3859',
-        status: 'Não concluída'
-      },
-      {
-        id: 13764,
-        numero: '13764',
-        empreendimento: '901',
-        equipamento: 'Trator de esteira D6',
-        bombaBico: '1 | Tanque principal',
-        destino: 'EQ | Equipamento',
-        data: '15/10/2025',
-        observacao: 'CAMINHÃO PIPA MERCEDES',
-        status: 'Concluida'
-      }
-    ];
+  ngOnInit() {
+    // Se depois você quiser montar a lista a partir dos filtros,
+    // pode usar os queryParams aqui.
+    this.route.queryParams.subscribe(params => {
+      // MOCK só pra manter igual ao seu rascunho
+      this.lista = [
+        {
+          numeroRequisicao: 13763,
+          status: 'Não concluída',
+          empreendimento: '900',
+          equipamento: 'fdjsfk jksdjf',
+          bombaBico: '3 | Tanque Itaqua',
+          destino: 'EQ | Equipamento',
+          data: '99/99/9999',
+          observacao: 'CAM. BASCULANTE GBP-3859',
+        },
+        {
+          numeroRequisicao: 13764,
+          status: 'Concluída',
+          empreendimento: '901',
+          equipamento: 'Trator de esteira D6',
+          bombaBico: '1 | Tanque principal',
+          destino: 'EQ | Equipamento',
+          data: '15/10/2025',
+          observacao: 'CAMINHÃO PIPA MERCEDES',
+        },
+      ];
+    });
   }
-  verDetalhes(item: { id: number }): void {
-    this.router.navigate(['/tabs/abastecimento-proprio-edicao', item.id]);
+
+  onBack() {
+    // volta pra tela principal de Abastecimento
+    this.router.navigate(['/tabs/abastecimento']);
+  }
+
+  verDetalhes(item: any) {
+    // aqui você pode passar um id real se tiver
+    this.router.navigate(['/tabs/abastecimento-proprio-edicao'], {
+      queryParams: { numeroRequisicao: item.numeroRequisicao },
+    });
   }
 }

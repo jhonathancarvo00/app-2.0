@@ -1,67 +1,115 @@
+:host {
+  ion-content {
+    --background: #083244; // fundo azul escuro
+  }
+
+  --btn-green-start: #2ec46f;
+  --btn-green-end:   #1fb45e;
+}
+
+/* HEADER (igual às outras telas novas) */
 ion-header {
-  background-color: #023A51;
-  padding-top: 20px;
-  padding-bottom: 20px;
-
-  &::before {
-    position: absolute;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    right: 0;
-    background: url('../../../assets/img/loginBg.png') #023A51;
-    background-repeat: no-repeat;
-    background-size: cover;
-    opacity: .3;
-    content: "";
-    z-index: -1;
-  }
-
   ion-toolbar {
-    --background: transparent;
+    --background: #083244;
+    --border-width: 0;
+    --border-color: transparent;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px 0;
+
+    #logo-login {
+      height: 60px;
+      width: auto;
+    }
   }
 }
-ion-content {
-  --background: #023A51;
+
+/* Wrapper dos botões – sobe o bloco inteiro */
+.buttons-wrapper {
+  padding: 24px 16px 32px;  /* top menor => fica mais perto do topo */
 }
 
-.container-principal {
+/* Coluna que contém os botões */
+.buttons-row {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  padding: 20px;
+  gap: 16px;               /* espaço ENTRE os botões */
 }
-.linha-botoes {
-  display: flex;
-  justify-content: center;
+
+/* Botão verde padrão */
+.btnGreen {
+  --background: linear-gradient(90deg, var(--btn-green-start), var(--btn-green-end));
+  --background-activated: linear-gradient(90deg, #28b766, #1aa953);
+  --border-radius: 10px;
+  --box-shadow: 0 10px 24px rgba(0, 0, 0, 0.25);
+  --color: #ffffff;
+
   width: 100%;
-  margin-bottom: 24px;
-}
-.btn-opcao {
-  --background: linear-gradient(180deg, #2CBC63 0%, #25AD59 100%);
-  --border-radius: 9px;
-  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
+  height: 48px;
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.2px;
   text-transform: none;
-  height: 90px;
-  width: 45%;
-  max-width: 160px;
-  line-height: 1.3;
-  margin: 0 8px;
+
+  transition: transform 0.08s ease;
 }
+
+.btnGreen:active {
+  transform: translateY(1px);
+}
+
+/* Padding horizontal do grid do header */
+ion-header ion-row > ion-col {
+  padding-left: 10px !important;
+  padding-right: 10px !important;
+}
+
+@media (max-width: 767px) {
+  ion-header ion-row > ion-col {
+    margin-top: 8px;
+  }
+}
+
+/* Caso tenha listas/cards nessa tela no futuro */
+ion-card,
+ion-item,
+ion-list {
+  --background: #0b3e52;
+  --ion-item-background: #0b3e52;
+  color: #e5f0f6;
+}
+.home-content {
+  --background: #083244; // mesmo fundo das outras telas de frotas
+}
+
+/* Container dos botões */
+.buttons-wrapper {
+  margin-top: 40px;      // sobe o bloco de botões
+  padding: 0 24px;
+}
+
+/* Colunas dos botões */
+.button-col {
+  padding: 0 6px;
+}
+
+/* Botões de Abastecimento (linha de cima) */
+.btn-abastecimento {
+  height: 72px;
+  white-space: normal;
+  line-height: 1.2;
+}
+
+/* Espaço entre a linha de cima e o botão Voltar */
+.bottom-row {
+  margin-top: 16px;
+}
+
+/* Botão Voltar, se quiser um pouquinho diferente pode mexer aqui */
 .btn-voltar {
-  --background: linear-gradient(180deg, #2CBC63 0%, #25AD59 100%);
-  --border-radius: 9px;
-  --box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
-  color: white;
-  font-weight: 600;
-  font-size: 16px;
-  text-transform: none;
-  height: 50px;
-  width: 70%;
-  max-width: 240px;
+  margin-top: 4px;
 }

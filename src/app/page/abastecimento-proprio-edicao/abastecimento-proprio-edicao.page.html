@@ -1,186 +1,199 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/tabs/abastecimento-proprio-pesquisa"
-        text=""
-        icon="chevron-back-outline">
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title>Abastecimento Próprio - Edição</ion-title>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- casinha -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Abastecimento Próprio - Edição</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="form-container">
+<ion-content class="os-content">
+  <div class="os-page">
+    <div class="os-card">
 
-    <!--CAMPO QUE FOI PEDIDO PARA TIRAR NA NOSSA SEGUNDA REUNIÃO-->
-    
-   <!--<ion-item lines="none">
-      <ion-label position="stacked">Requisição</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item> -->
+      <!-- Origem / Tanque -->
+      <div class="abp-field">
+        <label class="abp-label">Origem / Tanque</label>
+        <ion-input class="abp-input" type="text"></ion-input>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Origem / Tanque</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <!-- Equipamento -->
+      <div class="abp-field">
+        <label class="abp-label">Equipamento</label>
+        <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+          <ion-select-option value="1">Selecione</ion-select-option>
+        </ion-select>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Equipamento</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+      <!-- DATA – campo TODO clicável + ícone dentro -->
+      <div class="abp-field">
+        <label class="abp-label">Data</label>
+        <div class="abp-date-input" (click)="openCalendar($event)">
+          <ion-input
+            class="abp-input abp-date-display"
+            readonly
+            placeholder="dd/mm/aaaa"
+            [value]="formatDate(data)">
+          </ion-input>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Data</ion-label>
-      <ion-input type="text" placeholder="dd/mm/aaaa"></ion-input>
-    </ion-item>
+          <!-- botão agora é só visual, clique é no container -->
+          <button type="button" class="abp-date-btn">
+            <ion-icon name="calendar-clear-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
 
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Bomba / Bico</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Destino</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Empreendimento</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Etapa</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Odômetro Atual</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Odômetro Abastecimento</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Horímetro Atual</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Horímetro</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <!-- Bomba / Bico e Destino -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Bomba / Bico</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Insumo</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Destino</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
 
-    <!--NOVOS CAMPOS -->
+      <!-- Empreendimento / Etapa -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Empreendimento</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-    <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Troca/ Reposição</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Aplicação</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Etapa</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
 
+      <!-- Odômetro -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Odômetro Atual</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
 
+        <div class="abp-field abp-half">
+          <label class="abp-label">Odômetro Abastecimento</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
 
+      <!-- Horímetro -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Horímetro Atual</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
 
+        <div class="abp-field abp-half">
+          <label class="abp-label">Horímetro</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
 
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Quantidade</ion-label>
-            <ion-input type="number" value="62,000"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">No.Bomba Inicial</ion-label>
-            <ion-input type="number" value="255867,8"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">No.Bomba Final</ion-label>
-            <ion-input type="number" value="255929,8"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Motorista / Operador</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Colaborador / Frentista</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Hora Abastecimento</ion-label>
-            <ion-input type="time"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Bloco</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <!-- Insumo -->
+      <div class="abp-field">
+        <label class="abp-label">Insumo</label>
+        <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+          <ion-select-option value="1">Selecione</ion-select-option>
+        </ion-select>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Observação</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
-  </div>
+      <!-- Troca / Reposição e Aplicação -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Troca/ Reposição</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-  <div class="button-container">
-    <ion-button expand="block" class="btn-confirmar" (click)="onConfirmar()">
-      Confirmar
-    </ion-button>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Aplicação</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <!-- Quantidade / No.Bomba -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-third">
+          <label class="abp-label">Quantidade</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+        <div class="abp-field abp-third">
+          <label class="abp-label">No.Bomba Inicial</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+        <div class="abp-field abp-third">
+          <label class="abp-label">No.Bomba Final</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
+
+      <!-- Motorista / Frentista -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Motorista / Operador</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+
+        <div class="abp-field abp-half">
+          <label class="abp-label">Colaborador / Frentista</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <!-- Hora / Bloco -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Hora Abastecimento</label>
+          <ion-input class="abp-input" type="time"></ion-input>
+        </div>
+
+        <div class="abp-field abp-half">
+          <label class="abp-label">Bloco</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
+
+      <!-- Observação -->
+      <div class="abp-field">
+        <label class="abp-label">Observação</label>
+        <ion-input class="abp-input" type="text"></ion-input>
+      </div>
+
+      <!-- Botão confirmar -->
+      <div class="abp-actions">
+        <button type="button" class="abp-primary-btn" (click)="confirmar()">
+          CONFIRMAR
+        </button>
+      </div>
+    </div>
   </div>
 </ion-content>

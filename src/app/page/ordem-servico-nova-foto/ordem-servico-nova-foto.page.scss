@@ -1,103 +1,114 @@
-
-:host {
-  ion-content {
-    --background: #f4f7fa;
-  }
-}
-
-ion-header {
-  ion-toolbar {
-    --background: #f4f7fa;
-    ion-title,
-    ion-back-button {
-      color: #023a51;
-    }
-  }
-}
-
-.foto-card,
-.form-container {
-  --background: #ffffff;
-  background: #ffffff;
-  margin: 16px;
-  padding: 20px 16px;
-  border-radius: 12px;
-  box-shadow: 0 10px 24px rgba(12, 42, 90, 0.08);
-}
-
-.btn-localizar {
-  --background: #e9edf1;
-  --background-activated: #e1e7ee;
-  --color: #023a51;
-  --box-shadow: 0 3px 0 #cbd5e1;
-  height: 44px;
-  border-radius: 12px;
-  font-weight: 600;
-  text-transform: none;
-  margin-bottom: 24px;
-}
-
-
-.foto-item,
-ion-item {
-  --background: transparent;
-  --padding-start: 0;
-  --inner-padding-end: 0;
+/* HEADER igual às outras telas */
+.os-header,
+.os-header ion-toolbar {
+  --background: #f4f6f9 !important;
+  background: #f4f6f9 !important;
+  color: #2d6fb1;
   --border-width: 0;
-  margin-bottom: 20px;
-
-  ion-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #023a51;
-    margin-bottom: 8px;
-  }
 }
 
-
-.preview,
-.image-placeholder { 
-  width: 100%;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  background: #f8fafc;
-  overflow: hidden; 
-  min-height: 171px; 
+.os-header-bar {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 6px 16px 4px;
+}
 
-  img,
-  .placeholder-box {
-    width: 100%;
-    display: block;
-    aspect-ratio: 360 / 171;
-    object-fit: contain;
-  }
+.os-header-spacer {
+  width: 24px;
+}
 
-  .placeholder-box {
-    background: #f8f9fa;
-  }
+.os-back-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-  &.vazio {
+  img {
+    width: 24px;
+    height: 24px;
   }
 }
 
-
-.button-container {
-  padding: 8px 16px 16px 16px;
-  background: #f4f7fa;
-}
-
-.btn-confirmar {
-  --background: #e9f2ff;
-  --background-activated: #d8e6fa;
-  --box-shadow: none;
-  --color: #5298ff;
-  height: 56px;
-  border-radius: 9999px; 
+.os-title {
+  margin: 0;
   font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
+  font-weight: 600;
+  color: #2d6fb1;
+}
+
+/* Fundo */
+.os-content {
+  --background: #f4f6f9;
+}
+
+.os-page {
+  display: flex;
+  justify-content: center;
+  padding: 12px 12px 24px;
+}
+
+/* CARD igual padrão */
+.os-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.08);
+  padding: 18px 18px 24px;
+}
+
+/* Inputs */
+.os-field {
+  margin-top: 16px;
+}
+
+.os-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2d6fb1;
+}
+
+.os-textarea {
+  --background: #f9fbff;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --padding-top: 10px;
+  border-radius: 8px;
+  border: 1px solid #dde5f2;
+  font-size: 13px;
+}
+
+/* Botão de procurar foto */
+.os-picker-btn {
+  width: 100%;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 16px;
+  background: #e4edf9;
+  color: #2d6fb1;
+  font-weight: 600;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* Botão confirmar */
+.os-actions {
+  margin-top: 20px;
+}
+
+.os-primary-btn {
+  width: 100%;
+  border: none;
+  border-radius: 22px;
+  padding: 10px;
+  background: #e4f1ff;
+  color: #2d6fb1;
+  font-weight: 600;
+  font-size: 13px;
+  letter-spacing: 0.8px;
 }

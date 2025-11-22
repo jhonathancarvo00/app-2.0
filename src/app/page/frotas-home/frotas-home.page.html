@@ -2,50 +2,59 @@
   <ion-toolbar lines="none">
     <ion-grid>
       <ion-row class="header-row ion-align-items-center">
-        <!-- Hamburguer -->
-        <ion-col size="auto" class="menu-trigger">
-          <menu-root contentId="frotas-content"></menu-root>
+        <!-- ÚNICO menu hamburguer -->
+        <ion-col size="auto">
+          <ion-buttons>
+            <ion-menu-button autoHide="false">
+              <ion-icon name="menu" class="ion-padding"></ion-icon>
+            </ion-menu-button>
+          </ion-buttons>
         </ion-col>
 
         <!-- Logo centralizada -->
-        <ion-col>
+        <ion-col class="ion-text-center">
           <div class="logo">
             <img id="logo-login" src="../../assets/whiteLogo.svg" />
           </div>
         </ion-col>
 
-        <!-- placeholder para balancear o grid -->
+        <!-- Coluna fantasma pra equilibrar -->
         <ion-col size="auto" class="menu-placeholder">
-          <ion-icon name="menu" style="visibility: hidden;" class="ion-padding"></ion-icon>
+          <ion-icon
+            name="menu"
+            class="ion-padding"
+            style="visibility: hidden;">
+          </ion-icon>
         </ion-col>
       </ion-row>
     </ion-grid>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true" id="frotas-content">
-  <ion-grid class="btn-area">
+<ion-content class="home-content">
+  <ion-grid class="buttons-wrapper">
     <ion-row class="ion-justify-content-center">
-      <ion-col size="11" sizeMd="8" sizeLg="6">
-        <ion-row class="ion-justify-content-center ion-align-items-center">
-          <ion-col size="12" sizeSm="6">
-            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goOrdemServico()">
-              Ordem de Serviço
-            </ion-button>
-          </ion-col>
+      <ion-col size="12" class="buttons-row">
+        <ion-button
+          class="btnGreen ion-text-capitalize btn-home"
+          expand="block"
+          (click)="goOrdemServico()">
+          Ordem de Serviço
+        </ion-button>
 
-          <ion-col size="12" sizeSm="6">
-            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goAbastecimento()">
-              Abastecimento
-            </ion-button>
-          </ion-col>
+        <ion-button
+          class="btnGreen ion-text-capitalize btn-home"
+          expand="block"
+          (click)="goAbastecimento()">
+          Abastecimento
+        </ion-button>
 
-          <ion-col size="12" sizeSm="6">
-            <ion-button expand="block" class="btnGreen ion-text-capitalize" (click)="goEstoque()">
-              Estoque
-            </ion-button>
-          </ion-col>
-        </ion-row>
+        <ion-button
+          class="btnGreen ion-text-capitalize btn-home"
+          expand="block"
+          (click)="goEstoque()">
+          Estoque
+        </ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>

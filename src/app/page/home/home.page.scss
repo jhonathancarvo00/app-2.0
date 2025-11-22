@@ -88,4 +88,53 @@ ion-list {
   --background: #0b3e52;
   --ion-item-background: #0b3e52;
   color: #e5f0f6;
+
+
+
+
+}
+.buttons-wrapper {
+  margin-top: 24px; // distância da logo até os botões
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: center;
+  gap: 16px;        // espaço entre os dois botões
+}
+
+.btn-home {
+  width: 160px;     // largura fixa IGUAL pros dois botões
+  height: 56px;
+  border-radius: 8px;
+  text-align: center;
+  white-space: normal; // permite quebrar linha dentro do botão
+}
+ion-header ion-toolbar {
+  /* mesma cor de fundo padrão do app,
+     pra não ficar aquela faixa preta */
+  --background: transparent;
+}
+
+ion-content {
+  --background: #00384c; // usa a cor que o resto do app está usando
+}
+
+.home-bg {
+  min-height: 100%;
+}
+
+/* área dos botões de cima */
+.buttons-wrapper {
+  margin-top: 16px;
+}
+
+.buttons-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.btn-home {
+  flex: 1;
 }

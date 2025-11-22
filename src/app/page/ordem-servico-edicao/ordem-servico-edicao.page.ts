@@ -17,45 +17,51 @@ export class OrdemServicoEdicaoPage implements OnInit {
 
   constructor(
     private router: Router,
-    private popoverCtrl: PopoverController 
-  ) { }
+    private popoverCtrl: PopoverController
+  ) {}
 
-  ngOnInit() {
+  ngOnInit() {}
+
+  // Voltar para a tela de pesquisa de Ordem de Serviço
+  onBack() {
+    this.router.navigate(['/tabs/ordem-servico']);
   }
 
+  // Abre o popover de calendário,
+  // fieldName indica qual campo será preenchido
   async openCalendar(event: any, fieldName: 'dataAbertura' | 'dataConclusao') {
     const popover = await this.popoverCtrl.create({
       component: CalendarPopoverComponent,
-      event: event,
+      event,
       backdropDismiss: true,
       translucent: true,
       cssClass: 'calendar-popover'
     });
 
     await popover.present();
-
     const { data } = await popover.onDidDismiss();
 
     if (data && data.date) {
       if (fieldName === 'dataAbertura') {
         this.dataAbertura = data.date;
-      } else if (fieldName === 'dataConclusao') {
+      } else {
         this.dataConclusao = data.date;
       }
     }
   }
 
+  // Mostra dd/MM/yyyy ou vazio
   formatDate(isoString: string | null): string {
     if (!isoString) return '';
     try {
       return format(parseISO(isoString), 'dd/MM/yyyy');
-    } catch (error) {
+    } catch {
       return '';
     }
   }
 
+  // Clicar na setinha (próxima etapa)
   proximaEtapa() {
-    console.log('Botão de próxima etapa clicado!');
     this.router.navigate(['/tabs/ordem-servico-defeitos']);
   }
 }

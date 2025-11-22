@@ -1,99 +1,198 @@
-:host {
-  ion-content {
-    --background: #F4F7FA;
-  }
-}
-
-ion-header {
-  ion-toolbar {
-    --background: #F4F7FA;
-    ion-title, ion-back-button {
-      color: #023A51;
-    }
-  }
-}
-
-.form-container {
-  background: #ffffff;
-  margin: 16px;
-  padding: 20px 16px;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.07);
-}
-
-ion-item {
-  --background: transparent;
-  --padding-start: 0;
-  --inner-padding-end: 0;
+/* topo igual à tela de Ordem Serviço */
+.os-header,
+.os-header ion-toolbar {
+  --background: #f4f6f9 !important;
+  background: #f4f6f9 !important;
+  color: #2d6fb1;
   --border-width: 0;
-  margin-bottom: 20px;
+}
 
-  ion-label {
-    font-size: 14px;
-    font-weight: 600;
-    color: #023A51;
-    margin-bottom: 8px;
-  }
+.os-header-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 6px 16px 10px;
+}
 
-  ion-input, ion-select {
-    --background: #ffffff;
-    border: 1px solid #e2e8f0;
-    border-radius: 8px;
-    --padding-start: 12px;
-    --padding-end: 12px;
-    width: 100%;
-    font-size: 16px;
-    color: #333;
-  }
+.os-back-btn {
+  border: none;
+  background: transparent;
+  padding: 0;
+  display: flex;
+  align-items: center;
 
-  ion-select {
-    --padding-top: 13px;
-    --padding-bottom: 13px;
-  }
-
-  &.item-has-focus ion-input,
-  &.item-has-focus ion-select {
-    border-color: #5298FF;
+  img {
+    width: 24px;
+    height: 24px;
   }
 }
 
-ion-grid ion-col {
-  padding-left: 0;
-  padding-right: 0;
-  &:first-child {
-    padding-right: 8px;
-  }
-  &:last-child {
-    padding-left: 8px;
-  }
+.os-header-spacer {
+  width: 48px; /* só pra balancear visualmente com o back */
 }
 
-.button-container {
-  padding: 0 16px 24px 16px;
-  background: #F4F7FA;
+.os-title {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #2d6fb1;
+}
+
+.os-content {
+  --background: #f4f6f9;
+}
+
+.os-page {
+  display: flex;
+  justify-content: center;
+  padding: 12px 12px 80px; /* espaço pro botão de baixo */
+}
+
+.os-card {
+  width: 100%;
+  max-width: 420px;
+  background: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 7px 16px rgba(0, 0, 0, 0.08);
+  padding: 18px 18px 24px;
+}
+
+.os-form {
+  width: 100%;
+}
+
+/* campos */
+.os-field {
+  margin-bottom: 14px !important;
+}
+
+.os-label {
+  display: block;
+  margin-bottom: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #2d6fb1;
+}
+
+/* input padrão (igual da tela de pesquisa OS) */
+/* Inputs arredondados (texto legível) */
+.os-input {
+  --background: #f9fbff;
+  --padding-start: 10px;
+  --padding-end: 10px;
+  --min-height: 40px;
+  --color: #3a3a3a;               /* cor do texto digitado */
+  --placeholder-color: #b0bdd5;   /* cor do placeholder dd/mm/aaaa */
+  border-radius: 8px;
+  border: 1px solid #dde5f2;
+   --highlight-color-focused: #2d6fb1;
+  --highlight-color: #2d6fb1;
+  --highlight-color-valid: #2d6fb1;
+  --highlight-color-invalid: #2d6fb1;
+  font-size: 13px;
+}
+
+
+/* ion-select com cara de input */
+.os-select-input {
+  --padding-start: 12px;
+  --padding-end: 32px;
+  --placeholder-color: #7a8ba8;
+  color: #7a8ba8;
+}
+
+/* datas lado a lado */
+.os-field-inline {
+  display: flex;
+  gap: 10px;
+}
+
+.os-field-half {
+  flex: 1;
+}
+
+/* wrapper pra input + ícone de calendário */
+.os-date-wrapper {
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 1px solid #dde5f2;
+  background: #f9fbff;
+  padding-right: 10px;
+}
+
+.os-date-input {
+  --background: transparent;
+  --border-width: 0;
+  --padding-start: 10px;
+  --padding-end: 6px;
+  --min-height: 40px;
+}
+
+.os-date-wrapper ion-icon {
+  font-size: 18px;
+  color: #a0b2cf;
+}
+
+/* seta embaixo à direita, fora do card */
+.os-bottom {
   display: flex;
   justify-content: flex-end;
+  padding: 0 24px 24px;
 }
 
-.btn-next {
+.os-next-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 24px;
+  border: none;
+  background: #e4f1ff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.08);
+}
+
+.os-next-btn ion-icon {
+  font-size: 20px;
+  color: #2d6fb1;
+}
+/* container das duas datas na mesma linha */
+.os-group-inline {
+  display: flex;
+  gap: 12px;
+   margin-bottom: 14px; 
+}
+
+.os-group-half {
+  flex: 1;
+}
+
+/* Campo visual de data (placeholder + ícone) */
+.os-date-field {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #dde5f2;
+  background: #f9fbff;
+  font-size: 13px;
+  color: #b0bdd5;          /* cor do placeholder */
+  cursor: pointer;
+
   ion-icon {
-    font-size: 28px;
-    color: #023A51; 
+    font-size: 18px;
+    color: #b0bdd5;
   }
 }
 
-ion-item {
-  position: relative;
+/* Quando tiver valor, muda cor do texto para “texto normal” */
+.os-date-field.has-value {
+  color: #4a5a73;
+}
 
-  ion-icon[name="calendar-outline"] {
-    position: absolute;
-    right: 12px;
-    top: 55%;
-    transform: translateY(-50%);
-    color: #8c8c8c;
-  }
-
-  ion-input[readonly] {
-    cursor: pointer;
-  }
+.os-date-field.has-value ion-icon {
+  color: #a0b2cf;
 }
