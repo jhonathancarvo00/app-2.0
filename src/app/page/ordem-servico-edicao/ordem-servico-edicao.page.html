@@ -20,16 +20,28 @@
       <form class="os-form">
 
         <!-- Número Ordem Serviço -->
-        <div class="os-field">
-          <label class="os-label">Número Ordem Serviço</label>
-          <ion-input class="os-input" type="text"></ion-input>
-        </div>
+<div class="os-field">
+  <label class="os-label">Número Ordem Serviço</label>
+  <ion-input
+    class="os-input"
+    type="text"
+    [(ngModel)]="numeroOS">
+  </ion-input>
+</div>
 
-        <!-- Descrição -->
-        <div class="os-field">
-          <label class="os-label">Descrição</label>
-          <ion-input class="os-input" type="text"></ion-input>
-        </div>
+
+<!-- Descrição -->
+<div class="os-field">
+  <label class="os-label">Descrição</label>
+  <ion-input
+    class="os-input"
+    type="text"
+    [(ngModel)]="descricao">
+  </ion-input>
+</div>
+
+
+
 
         <!-- Equipamento -->
         <div class="os-field">
@@ -37,8 +49,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="equipamento"
+            name="equipamento"
+          >
+            <ion-select-option
+              *ngFor="let eq of equipamentosLista"
+              [value]="eq.descricao || eq.nome || eq.equipamento"
+            >
+              {{ eq.descricao || eq.nome || eq.equipamento }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -48,43 +68,51 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="empreendimento"
+            name="empreendimento"
+          >
+            <ion-select-option
+              *ngFor="let emp of empreendimentosLista"
+              [value]="emp.descricao || emp.nome || emp.empreendimento"
+            >
+              {{ emp.descricao || emp.nome || emp.empreendimento }}
+            </ion-select-option>
           </ion-select>
         </div>
 
         <!-- Datas (Abertura / Conclusão) lado a lado -->
-<div class="os-group os-group-inline">
-  <!-- Data Abertura -->
-  <div class="os-group-half">
-    <label class="os-label">Data Abertura</label>
-    <div
-      class="os-date-field"
-      [ngClass]="{ 'has-value': dataAbertura }"
-      (click)="openCalendar($event, 'dataAbertura')"
-    >
-      <span class="os-date-value">
-        {{ formatDate(dataAbertura) || 'dd/mm/aaaa' }}
-      </span>
-      <ion-icon name="calendar-outline"></ion-icon>
-    </div>
-  </div>
+        <div class="os-group os-group-inline">
+          <!-- Data Abertura -->
+          <div class="os-group-half">
+            <label class="os-label">Data Abertura</label>
+            <div
+              class="os-date-field"
+              [ngClass]="{ 'has-value': dataAbertura }"
+              (click)="openCalendar($event, 'dataAbertura')"
+            >
+              <span class="os-date-value">
+                {{ formatDate(dataAbertura) || 'dd/mm/aaaa' }}
+              </span>
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+          </div>
 
-  <!-- Data Conclusão -->
-  <div class="os-group-half">
-    <label class="os-label">Data Conclusão</label>
-    <div
-      class="os-date-field"
-      [ngClass]="{ 'has-value': dataConclusao }"
-      (click)="openCalendar($event, 'dataConclusao')"
-    >
-      <span class="os-date-value">
-        {{ formatDate(dataConclusao) || 'dd/mm/aaaa' }}
-      </span>
-      <ion-icon name="calendar-outline"></ion-icon>
-    </div>
-  </div>
-</div>
+          <!-- Data Conclusão -->
+          <div class="os-group-half">
+            <label class="os-label">Data Conclusão</label>
+            <div
+              class="os-date-field"
+              [ngClass]="{ 'has-value': dataConclusao }"
+              (click)="openCalendar($event, 'dataConclusao')"
+            >
+              <span class="os-date-value">
+                {{ formatDate(dataConclusao) || 'dd/mm/aaaa' }}
+              </span>
+              <ion-icon name="calendar-outline"></ion-icon>
+            </div>
+          </div>
+        </div>
 
         <!-- Classificação -->
         <div class="os-field">
@@ -92,8 +120,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="classificacao"
+            name="classificacao"
+          >
+            <ion-select-option
+              *ngFor="let c of classificacoesLista"
+              [value]="c.descricao || c.nome"
+            >
+              {{ c.descricao || c.nome }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -103,15 +139,36 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="tipo"
+            name="tipo"
+          >
+            <ion-select-option
+              *ngFor="let t of tiposOsLista"
+              [value]="t.descricao || t.nome"
+            >
+              {{ t.descricao || t.nome }}
+            </ion-select-option>
           </ion-select>
         </div>
 
         <!-- Causa da Intervenção -->
         <div class="os-field">
           <label class="os-label">Causa da Intervenção</label>
-          <ion-input class="os-input" type="text"></ion-input>
+          <ion-select
+            class="os-input os-select-input"
+            interface="popover"
+            placeholder="Selecione"
+            [(ngModel)]="causaIntervencao"
+            name="causaIntervencao"
+          >
+            <ion-select-option
+              *ngFor="let c of causasIntervencaoLista"
+              [value]="c.descricao || c.nome"
+            >
+              {{ c.descricao || c.nome }}
+            </ion-select-option>
+          </ion-select>
         </div>
 
         <!-- Operador / Motorista -->
@@ -120,8 +177,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="operadorMotorista"
+            name="operadorMotorista"
+          >
+            <ion-select-option
+              *ngFor="let m of motoristasLista"
+              [value]="m.nome || m.descricao"
+            >
+              {{ m.nome || m.descricao }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -131,8 +196,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="empreendimentoIntervencao"
+            name="empreendimentoIntervencao"
+          >
+            <ion-select-option
+              *ngFor="let emp of empreendimentosLista"
+              [value]="emp.descricao || emp.nome || emp.empreendimento"
+            >
+              {{ emp.descricao || emp.nome || emp.empreendimento }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -142,8 +215,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="statusCodigo"
+            name="statusCodigo"
+          >
+            <ion-select-option
+              *ngFor="let st of statusLista"
+              [value]="st.valor"
+            >
+              {{ st.descricao }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -153,8 +234,16 @@
           <ion-select
             class="os-input os-select-input"
             interface="popover"
-            placeholder="Selecione">
-            <ion-select-option value="1">Selecione</ion-select-option>
+            placeholder="Selecione"
+            [(ngModel)]="manutentor"
+            name="manutentor"
+          >
+            <ion-select-option
+              *ngFor="let m of manutentoresLista"
+              [value]="m.nome || m.descricao"
+            >
+              {{ m.nome || m.descricao }}
+            </ion-select-option>
           </ion-select>
         </div>
 
@@ -164,8 +253,11 @@
 
   <!-- seta embaixo à direita, fora do card -->
   <div class="os-bottom">
-    <button class="os-next-btn" (click)="proximaEtapa()">
-      <ion-icon name="chevron-forward-outline"></ion-icon>
-    </button>
-  </div>
+<button class="os-next-btn" (click)="salvarOS()">
+  <ion-icon name="chevron-forward-outline"></ion-icon>
+</button>
+
+
+</div>
+
 </ion-content>

@@ -8,8 +8,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./ordem-servico-defeitos.page.scss'],
 })
 export class OrdemServicoDefeitosPage {
-
   segment: 'defeitos' | 'observacao' | 'fotos' = 'defeitos';
+
+  // textos das abas
+  defeitosConstatados: string = '';
+  causasProvaveis: string = '';
+  observacoes: string = '';
 
   // placeholders de fotos (pode trocar por objetos reais depois)
   photos = [1, 2];
@@ -26,12 +30,15 @@ export class OrdemServicoDefeitosPage {
   }
 
   confirmar() {
-    // Depois de confirmar, volta para a tela de pesquisa de OS
+    console.log('Defeitos constatados:', this.defeitosConstatados);
+    console.log('Causas prováveis:', this.causasProvaveis);
+    console.log('Observações:', this.observacoes);
+
+    // aqui depois a gente encaixa no payload da GravarOrdemServico
     this.router.navigate(['/tabs/ordem-servico-pesquisa']);
   }
 
   goNovaFoto() {
-    // Caminho correto conforme tabs-routing.module.ts
     this.router.navigate(['/tabs/ordem-servico-nova-foto']);
   }
 }

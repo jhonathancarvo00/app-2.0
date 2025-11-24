@@ -96,6 +96,7 @@
 
 /* Select no mesmo estilo */
 .abp-select {
+  --color: #333;         
   --placeholder-color: #a0b2cf;
   --placeholder-opacity: 1;
   --padding-end: 32px;
@@ -163,4 +164,15 @@
   font-weight: 600;
   letter-spacing: 0.8px;
   font-size: 13px;
+}
+/* Força o texto do ion-select a ficar visível */
+ion-select.abp-select {
+  --placeholder-color: #9a9a9a;
+  --placeholder-opacity: 1;
+}
+
+/* Parte interna do texto selecionado dentro do ion-select */
+ion-select.abp-select::part(text) {
+  color: #333 !important;
+  opacity: 1 !important;
 }

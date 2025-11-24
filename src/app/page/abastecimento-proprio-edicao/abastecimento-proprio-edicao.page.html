@@ -17,19 +17,40 @@
   <div class="os-page">
     <div class="os-card">
 
-      <!-- Origem / Tanque -->
-      <div class="abp-field">
-        <label class="abp-label">Origem / Tanque</label>
-        <ion-input class="abp-input" type="text"></ion-input>
-      </div>
+   <div class="abp-field">
+  <label class="abp-label">Origem / Tanque</label>
+  <ion-select
+    class="abp-input abp-select"
+    interface="popover"
+    placeholder="Selecione"
+    [(ngModel)]="bombaSelecionada"
+    name="bombaSelecionada"
+  >
+    <ion-select-option *ngFor="let b of bombas" [value]="b.bombaId">
+      {{ b.bombaDescricao || b.bombaCod }}
+    </ion-select-option>
+  </ion-select>
+</div>
 
-      <!-- Equipamento -->
-      <div class="abp-field">
-        <label class="abp-label">Equipamento</label>
-        <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
-          <ion-select-option value="1">Selecione</ion-select-option>
-        </ion-select>
-      </div>
+
+
+
+      <!-- Equipamento (EquipamentosMobile da API) -->
+    <div class="abp-field">
+  <label class="abp-label">Equipamento</label>
+  <ion-select
+    class="abp-input abp-select"
+    interface="popover"
+    placeholder="Selecione"
+    [(ngModel)]="equipamentoSelecionado"
+    name="equipamentoSelecionado"
+  >
+    <ion-select-option *ngFor="let e of equipamentos" [value]="e.id">
+      {{ e.descricao }}
+    </ion-select-option>
+  </ion-select>
+</div>
+
 
       <!-- DATA – campo TODO clicável + ícone dentro -->
       <div class="abp-field">
@@ -39,17 +60,17 @@
             class="abp-input abp-date-display"
             readonly
             placeholder="dd/mm/aaaa"
-            [value]="formatDate(data)">
+            [value]="formatDate(data)"
+          >
           </ion-input>
 
-          <!-- botão agora é só visual, clique é no container -->
           <button type="button" class="abp-date-btn">
             <ion-icon name="calendar-clear-outline"></ion-icon>
           </button>
         </div>
       </div>
 
-      <!-- Bomba / Bico e Destino -->
+      <!-- Bomba / Bico e Destino (ainda sem API, por enquanto só layout) -->
       <div class="abp-group-row">
         <div class="abp-field abp-half">
           <label class="abp-label">Bomba / Bico</label>
@@ -66,7 +87,7 @@
         </div>
       </div>
 
-      <!-- Empreendimento / Etapa -->
+      <!-- Empreendimento / Etapa (depois ligamos na API) -->
       <div class="abp-group-row">
         <div class="abp-field abp-half">
           <label class="abp-label">Empreendimento</label>
@@ -92,7 +113,11 @@
 
         <div class="abp-field abp-half">
           <label class="abp-label">Odômetro Abastecimento</label>
-          <ion-input class="abp-input" type="number"></ion-input>
+          <ion-input
+            class="abp-input"
+            type="number"
+            [(ngModel)]="odometro"
+          ></ion-input>
         </div>
       </div>
 
@@ -105,7 +130,11 @@
 
         <div class="abp-field abp-half">
           <label class="abp-label">Horímetro</label>
-          <ion-input class="abp-input" type="number"></ion-input>
+          <ion-input
+            class="abp-input"
+            type="number"
+            [(ngModel)]="horimetro"
+          ></ion-input>
         </div>
       </div>
 
@@ -138,7 +167,11 @@
       <div class="abp-group-row">
         <div class="abp-field abp-third">
           <label class="abp-label">Quantidade</label>
-          <ion-input class="abp-input" type="number"></ion-input>
+          <ion-input
+            class="abp-input"
+            type="number"
+            [(ngModel)]="quantidade"
+          ></ion-input>
         </div>
         <div class="abp-field abp-third">
           <label class="abp-label">No.Bomba Inicial</label>
@@ -150,7 +183,7 @@
         </div>
       </div>
 
-      <!-- Motorista / Frentista -->
+      <!-- Motorista / Frentista (depois ligamos na API) -->
       <div class="abp-group-row">
         <div class="abp-field abp-half">
           <label class="abp-label">Motorista / Operador</label>
@@ -185,7 +218,11 @@
       <!-- Observação -->
       <div class="abp-field">
         <label class="abp-label">Observação</label>
-        <ion-input class="abp-input" type="text"></ion-input>
+        <ion-input
+          class="abp-input"
+          type="text"
+          [(ngModel)]="observacao"
+        ></ion-input>
       </div>
 
       <!-- Botão confirmar -->

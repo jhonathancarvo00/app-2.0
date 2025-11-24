@@ -18,7 +18,7 @@
       (ionChange)="changeSegment($event)"
     >
       <ion-segment-button value="defeitos">
-        <ion-label>DEFEITOS/<br>CAUSAS</ion-label>
+        <ion-label>DEFEITOS/<br />CAUSAS</ion-label>
       </ion-segment-button>
 
       <ion-segment-button value="observacao">
@@ -43,6 +43,9 @@
             <label class="os-label">Defeitos Constatados</label>
             <ion-textarea
               class="os-textarea"
+              name="defeitosConstatados"
+              [(ngModel)]="defeitosConstatados"
+              [ngModelOptions]="{ standalone: true }"
               placeholder="Digite aqui..."
             ></ion-textarea>
           </div>
@@ -51,6 +54,9 @@
             <label class="os-label">Causas Prováveis</label>
             <ion-textarea
               class="os-textarea"
+              name="causasProvaveis"
+              [(ngModel)]="causasProvaveis"
+              [ngModelOptions]="{ standalone: true }"
               placeholder="Digite aqui..."
             ></ion-textarea>
           </div>
@@ -72,6 +78,9 @@
             <label class="os-label">Observações</label>
             <ion-textarea
               class="os-textarea"
+              name="observacoes"
+              [(ngModel)]="observacoes"
+              [ngModelOptions]="{ standalone: true }"
               placeholder="Digite aqui..."
             ></ion-textarea>
           </div>

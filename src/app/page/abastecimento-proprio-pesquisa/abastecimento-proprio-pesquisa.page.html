@@ -8,7 +8,6 @@
 
       <h1 class="os-title">Abastecimento Próprio - Pesquisa</h1>
 
-      <!-- Espaço pra alinhar o título -->
       <div class="os-header-spacer"></div>
     </div>
   </ion-toolbar>
@@ -24,43 +23,48 @@
         <!-- Cabeçalho -->
         <div class="os-card-header">
           <div class="os-card-os">
-            Número Requisição: {{ item.numeroRequisicao }}
+            Equipamento: {{ item.codequipamento }} - {{ item.modelo }}
           </div>
           <div class="os-card-status">
-            {{ item.status }}
+            Placa: {{ item.placa }}
           </div>
         </div>
 
         <!-- Corpo -->
         <div class="os-card-body">
           <div class="os-line">
-            <span class="os-label">Empreendimento:</span>
-            <span class="os-value">{{ item.empreendimento }}</span>
-          </div>
-
-          <div class="os-line">
-            <span class="os-label">Equipamento:</span>
-            <span class="os-value">{{ item.equipamento }}</span>
-          </div>
-
-          <div class="os-line">
-            <span class="os-label">Bomba/Bico:</span>
-            <span class="os-value">{{ item.bombaBico }}</span>
-          </div>
-
-          <div class="os-line">
-            <span class="os-label">Destino:</span>
-            <span class="os-value">{{ item.destino }}</span>
-          </div>
-
-          <div class="os-line">
             <span class="os-label">Data:</span>
-            <span class="os-value">{{ item.data }}</span>
+            <span class="os-value">
+              {{ item.dataabastecimento | date:'dd/MM/yyyy' }}
+            </span>
           </div>
 
           <div class="os-line">
-            <span class="os-label">Observação:</span>
-            <span class="os-value">{{ item.observacao }}</span>
+            <span class="os-label">Quantidade:</span>
+            <span class="os-value">
+              {{ item.quantidade }} L
+            </span>
+          </div>
+
+          <div class="os-line">
+            <span class="os-label">Insumo:</span>
+            <span class="os-value">
+              {{ item.insumoDesc }}
+            </span>
+          </div>
+
+          <div class="os-line">
+            <span class="os-label">Fornecedor/Posto:</span>
+            <span class="os-value">
+              {{ item.fornecedorRazao }}
+            </span>
+          </div>
+
+          <div class="os-line" *ngIf="item.numVoucher">
+            <span class="os-label">Voucher:</span>
+            <span class="os-value">
+              {{ item.numVoucher }}
+            </span>
           </div>
         </div>
 
