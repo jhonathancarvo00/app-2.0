@@ -1,157 +1,212 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/tabs/abastecimento-postos"
-        text=""
-        icon="chevron-back-outline">
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title>Abastecimento em Postos - Edição</ion-title>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- casinha -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Abastecimento em Postos - Edição</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="form-container">
-    <ion-item lines="none">
-      <ion-label position="stacked">Equipamento</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+<ion-content class="os-content">
+  <div class="os-page">
+    <div class="os-card">
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Empreendimento</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+      <!-- Equipamento -->
+      <div class="abp-field">
+        <label class="abp-label">Equipamento</label>
+        <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+          <ion-select-option value="1">Selecione</ion-select-option>
+        </ion-select>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Empresa</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+      <!-- Empreendimento / Empresa -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Empreendimento</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-    <!-- Novo Campo Fornecedor -->
+        <div class="abp-field abp-half">
+          <label class="abp-label">Empresa</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Fornecedor</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+      <!-- Fornecedor / Centro de despesas -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Fornecedor</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Centro de despesas</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Centro de despesas</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Etapa</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+      <!-- Etapa / Insumo -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Etapa</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Insumo</ion-label>
-      <ion-select placeholder="Selecione"></ion-select>
-    </ion-item>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Insumo</label>
+          <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+            <ion-select-option value="1">Selecione</ion-select-option>
+          </ion-select>
+        </div>
+      </div>
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Observação</ion-label>
-      <ion-input type="text"></ion-input>
-    </ion-item>
+      <!-- Observação -->
+      <div class="abp-field">
+        <label class="abp-label">Observação</label>
+        <ion-input class="abp-input" type="text"></ion-input>
+      </div>
 
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Número Voucher</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Pesquisa Número Voucher</ion-label>
-            <ion-input type="text"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+      <!-- Número Voucher / Pesquisa Número Voucher -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Número Voucher</label>
+          <ion-input class="abp-input" type="text"></ion-input>
+        </div>
 
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Quantidade Solicitada</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Valor Solicitado</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Pesquisa Número Voucher</label>
+          <ion-input class="abp-input" type="text"></ion-input>
+        </div>
+      </div>
 
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Bloco</ion-label>
-            <ion-select placeholder="Selecione"></ion-select>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+      <!-- Quantidade Solicitada / Valor Solicitado -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Quantidade Solicitada</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
 
-    <h4 class="section-title">Dados de Retorno</h4>
+        <div class="abp-field abp-half">
+          <label class="abp-label">Valor Solicitado</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
 
-    <ion-grid class="ion-no-padding">
-      <ion-row>
-        <ion-col size="4">
-          <ion-item lines="none" (click)="openCalendar($event, 'dtRetirada')">
-            <ion-label position="stacked">Dt.Retirada</ion-label>
-            <ion-input readonly="true" [value]="formatDate(dtRetirada)" placeholder="dd/mm/aaaa"></ion-input>
-            <ion-icon name="calendar-outline" slot="end"></ion-icon>
-          </ion-item>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item lines="none">
-            <ion-label position="stacked">Qtd. Retirada</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-        <ion-col size="4">
-          <ion-item lines="none">
-            <ion-label position="stacked">Total</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+      <!-- Bloco -->
+      <div class="abp-field">
+        <label class="abp-label">Bloco</label>
+        <ion-select class="abp-input abp-select" interface="popover" placeholder="Selecione">
+          <ion-select-option value="1">Selecione</ion-select-option>
+        </ion-select>
+      </div>
 
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none" (click)="openCalendar($event, 'hodometroData')">
-            <ion-label position="stacked">Hodômetro</ion-label>
-            <ion-input readonly="true" [value]="formatDate(hodometroData)" placeholder="dd/mm/aaaa"></ion-input>
-            <ion-icon name="calendar-outline" slot="end"></ion-icon>
-          </ion-item>
-        </ion-col>
-        <ion-col>
-          <ion-item lines="none">
-            <ion-label position="stacked">Horímetro</ion-label>
-            <ion-input type="number"></ion-input>
-          </ion-item>
-        </ion-col>
-      </ion-row>
+      <!-- Título seção Dados de Retorno -->
+      <div class="abp-section-title">
+        Dados de Retorno
+      </div>
 
-      <ion-row>
-        <ion-col>
-          <ion-item lines="none" (click)="openCalendar($event, 'nCtlPostoData')">
-            <ion-label position="stacked">Nº Ctrl Posto</ion-label>
-            <ion-input readonly="true" [value]="formatDate(nCtlPostoData)" placeholder="dd/mm/aaaa"></ion-input>
-            <ion-icon name="calendar-outline" slot="end"></ion-icon>
-          </ion-item>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
-  </div>
+      <!-- Dt.Retirada / Qtd. Retirada / Total -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-third">
+          <label class="abp-label">Dt.Retirada</label>
+          <div class="abp-date-input" (click)="openCalendar($event, 'dtRetirada')">
+            <ion-input
+              class="abp-input abp-date-display"
+              readonly
+              placeholder="dd/mm/aaaa"
+              [value]="formatDate(dtRetirada)">
+            </ion-input>
 
-  <div class="button-container">
-    <ion-button expand="block" class="btn-confirmar" (click)="confirmar()">
-      CONFIRMAR
-    </ion-button>
+            <button
+              type="button"
+              class="abp-date-btn"
+              (click)="openCalendar($event, 'dtRetirada'); $event.stopPropagation()">
+              <ion-icon name="calendar-clear-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="abp-field abp-third">
+          <label class="abp-label">Qtd. Retirada</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+
+        <div class="abp-field abp-third">
+          <label class="abp-label">Total</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
+
+      <!-- Hodômetro / Horímetro -->
+      <div class="abp-group-row">
+        <div class="abp-field abp-half">
+          <label class="abp-label">Hodômetro</label>
+          <div class="abp-date-input" (click)="openCalendar($event, 'hodometroData')">
+            <ion-input
+              class="abp-input abp-date-display"
+              readonly
+              placeholder="dd/mm/aaaa"
+              [value]="formatDate(hodometroData)">
+            </ion-input>
+
+            <button
+              type="button"
+              class="abp-date-btn"
+              (click)="openCalendar($event, 'hodometroData'); $event.stopPropagation()">
+              <ion-icon name="calendar-clear-outline"></ion-icon>
+            </button>
+          </div>
+        </div>
+
+        <div class="abp-field abp-half">
+          <label class="abp-label">Horímetro</label>
+          <ion-input class="abp-input" type="number"></ion-input>
+        </div>
+      </div>
+
+      <!-- Nº Ctrl Posto -->
+      <div class="abp-field">
+        <label class="abp-label">Nº Ctrl Posto</label>
+        <div class="abp-date-input" (click)="openCalendar($event, 'nCtlPostoData')">
+          <ion-input
+            class="abp-input abp-date-display"
+            readonly
+            placeholder="dd/mm/aaaa"
+            [value]="formatDate(nCtlPostoData)">
+          </ion-input>
+
+          <button
+            type="button"
+            class="abp-date-btn"
+            (click)="openCalendar($event, 'nCtlPostoData'); $event.stopPropagation()">
+            <ion-icon name="calendar-clear-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Botão confirmar -->
+      <div class="abp-actions">
+        <button type="button" class="abp-primary-btn" (click)="confirmar()">
+          CONFIRMAR
+        </button>
+      </div>
+
+    </div>
   </div>
 </ion-content>

@@ -9,10 +9,9 @@ import { Router } from '@angular/router';
 })
 export class AbastecimentoPostosPesquisaPage implements OnInit {
 
-  // Simulação de resultados (mantenha/ajuste conforme seu serviço real)
   resultados: any[] = [
     {
-      Fornecedor: 'ALELO INSTITUIÇÃO PAGEMENTO S/A',
+      Fornecedor: 'ALELO INSTITUIÇÃO PAGAMENTO S/A',
       equipamento: 'VETERO87',
       Voucher: '6314',
       data: '99/99/9999',
@@ -23,6 +22,10 @@ export class AbastecimentoPostosPesquisaPage implements OnInit {
   constructor(private router: Router) {}
 
   ngOnInit() {}
+
+  onBack() {
+    this.router.navigate(['/tabs/abastecimento']);
+  }
 
   verDetalhes(item?: any) {
     this.router.navigate(['/tabs/abastecimento-postos-edicao']);

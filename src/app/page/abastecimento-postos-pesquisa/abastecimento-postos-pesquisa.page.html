@@ -1,40 +1,69 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/tabs/abastecimento-postos"
-        text=""
-        icon="chevron-back-outline">
-      </ion-back-button>
-    </ion-buttons>
-    <ion-title>Abastecimento em Postos - Pesquisa</ion-title>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- Casinha -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
+
+      <h1 class="os-title">Abastecimento em Postos - Pesquisa</h1>
+
+      <div class="os-header-spacer"></div>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <ion-card *ngFor="let item of resultados">
-    <ion-card-content>
-      <ion-grid class="ion-no-padding">
-        <ion-row class="ion-align-items-start">
-          <ion-col size="8">
-            <p><strong>Fornecedor: </strong> {{ item.Fornecedor }}</p>
-            <p><strong>Equipamento: </strong> {{ item.equipamento }}</p>
-            <p><strong>Voucher: </strong> {{ item.Voucher }}</p>
-            <p><strong>Data: </strong> {{ item.data }}</p>
-            <p><strong>Observação: </strong> {{ item.observacao }}</p>
-          </ion-col>
+<ion-content class="os-content">
+  <div class="os-page">
 
-          <ion-col size="4" class="ion-text-end">
-            <p class="status">{{ item.status }}</p>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
-    </ion-card-content>
+    <ng-container *ngIf="resultados && resultados.length; else vazio">
 
-    <div class="details-button-container">
-      <ion-button fill="clear" expand="block" class="details-button" (click)="verDetalhes(item)">
-        VER DETALHES
-      </ion-button>
-    </div>
-  </ion-card>
+      <div class="os-card" *ngFor="let item of resultados">
+
+        <!-- Cabeçalho -->
+        <div class="os-card-header">
+          <div class="os-card-os">
+            Fornecedor: {{ item.Fornecedor }}
+          </div>
+        </div>
+
+        <!-- Corpo -->
+        <div class="os-card-body">
+          <div class="os-line">
+            <span class="os-label">Equipamento:</span>
+            <span class="os-value">{{ item.equipamento }}</span>
+          </div>
+
+          <div class="os-line">
+            <span class="os-label">Voucher:</span>
+            <span class="os-value">{{ item.Voucher }}</span>
+          </div>
+
+          <div class="os-line">
+            <span class="os-label">Data:</span>
+            <span class="os-value">{{ item.data }}</span>
+          </div>
+
+          <div class="os-line" *ngIf="item.observacao">
+            <span class="os-label">Observação:</span>
+            <span class="os-value">{{ item.observacao }}</span>
+          </div>
+        </div>
+
+        <!-- Botão -->
+        <div class="os-card-footer">
+          <button type="button" class="os-details-btn" (click)="verDetalhes(item)">
+            VER DETALHES
+          </button>
+        </div>
+
+      </div>
+
+    </ng-container>
+
+    <ng-template #vazio>
+      <div class="os-empty">Nenhum abastecimento encontrado.</div>
+    </ng-template>
+
+  </div>
 </ion-content>

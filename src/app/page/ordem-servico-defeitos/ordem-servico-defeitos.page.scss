@@ -99,6 +99,17 @@
   border: 1px solid #dde5f2;
   font-size: 13px;
   --color: #3a3a3a;
+
+  /* força o foco AZUL (igual outras telas) */
+  --highlight-color-focused: #2d6fb1;
+  --highlight-color: #2d6fb1;
+  --highlight-color-valid: #2d6fb1;
+  --highlight-color-invalid: #2d6fb1;
+}
+
+/* borda azul quando focado */
+.os-textarea.ion-focused {
+  border-color: #2d6fb1 !important;
 }
 
 /* Botões principais */

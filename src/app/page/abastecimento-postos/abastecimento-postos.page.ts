@@ -12,6 +12,10 @@ import { CalendarPopoverComponent } from '../../components/calendar-popover/cale
 })
 export class AbastecimentoPostosPage implements OnInit {
 
+  fornecedor = '';
+  equipamento = '';
+  numeroVoucher = '';
+
   dataInicial: string | null = null;
   dataFinal: string | null = null;
 
@@ -21,6 +25,12 @@ export class AbastecimentoPostosPage implements OnInit {
   ) { }
 
   ngOnInit() {}
+
+  // casinha no header (mesmo padrão do abastecimento próprio)
+  onBack() {
+    this.router.navigate(['/tabs/abastecimento']);
+    // se o menu principal for outra rota, é só trocar aqui
+  }
 
   async openCalendar(event: any, fieldName: 'dataInicial' | 'dataFinal') {
     const popover = await this.popoverCtrl.create({

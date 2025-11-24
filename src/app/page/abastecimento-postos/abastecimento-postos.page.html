@@ -1,55 +1,111 @@
-<ion-header class="ion-no-border">
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button
-        defaultHref="/tabs/new-home"
-        text=""
-        icon="chevron-back-outline">
-      </ion-back-button>
-    </ion-buttons>
+<ion-header class="os-header">
+  <ion-toolbar lines="none">
+    <div class="os-header-bar">
+      <!-- casinha -->
+      <button class="os-back-btn" (click)="onBack()">
+        <img src="../../assets/icon/topoRequest.svg" alt="Voltar" />
+      </button>
 
-    <ion-title>Abastecimento em Postos</ion-title>
-    <ion-buttons slot="end">
-      <ion-button class="btn-novo" (click)="novo()" aria-label="Novo abastecimento">
+      <h1 class="os-title">Abastecimento em Postos</h1>
+
+      <!-- botão NOVO -->
+      <button class="os-new-btn" (click)="novo()">
         NOVO
-      </ion-button>
-    </ion-buttons>
+      </button>
+    </div>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-  <div class="form-container">
-    <ion-item lines="none">
-      <ion-label position="stacked">Fornecedor</ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
+<ion-content [fullscreen]="true" class="os-content">
+  <div class="os-page">
+    <div class="os-card">
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Equipamento</ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
+      <!-- Fornecedor -->
+      <div class="os-field">
+        <label class="os-label">Fornecedor</label>
+        <ion-input
+          class="os-input"
+          type="text"
+          [(ngModel)]="fornecedor">
+        </ion-input>
+      </div>
 
-    <ion-item lines="none" (click)="openCalendar($event, 'dataInicial')">
-      <ion-label position="stacked">Data Inicial</ion-label>
-      <ion-input readonly="true" [value]="formatDate(dataInicial)" placeholder="dd/mm/aaaa"></ion-input>
-      <ion-icon name="calendar-outline" slot="end"></ion-icon>
-    </ion-item>
+      <!-- Equipamento -->
+      <div class="os-field">
+        <label class="os-label">Equipamento</label>
+        <ion-input
+          class="os-input"
+          type="text"
+          [(ngModel)]="equipamento">
+        </ion-input>
+      </div>
 
-    <ion-item lines="none" (click)="openCalendar($event, 'dataFinal')">
-      <ion-label position="stacked">Data Final</ion-label>
-      <ion-input readonly="true" [value]="formatDate(dataFinal)" placeholder="dd/mm/aaaa"></ion-input>
-      <ion-icon name="calendar-outline" slot="end"></ion-icon>
-    </ion-item>
+      <!-- Data Inicial -->
+      <div class="os-field">
+        <label class="os-label">Data Inicial</label>
+        <div
+          class="os-date-input"
+          (click)="openCalendar($event, 'dataInicial')">
 
-    <ion-item lines="none">
-      <ion-label position="stacked">Número Voucher</ion-label>
-      <ion-input type="text" placeholder=""></ion-input>
-    </ion-item>
-  </div>
+          <ion-input
+            class="os-input os-date-display"
+            readonly
+            placeholder="dd/mm/aaaa"
+            [value]="formatDate(dataInicial)">
+          </ion-input>
 
-  <div class="button-container">
-    <ion-button expand="block" class="btn-pesquisar" (click)="pesquisar()">
-      PESQUISAR
-    </ion-button>
+          <button
+            type="button"
+            class="os-date-btn"
+            (click)="openCalendar($event, 'dataInicial'); $event.stopPropagation()">
+            <ion-icon name="calendar-clear-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Data Final -->
+      <div class="os-field">
+        <label class="os-label">Data Final</label>
+        <div
+          class="os-date-input"
+          (click)="openCalendar($event, 'dataFinal')">
+
+          <ion-input
+            class="os-input os-date-display"
+            readonly
+            placeholder="dd/mm/aaaa"
+            [value]="formatDate(dataFinal)">
+          </ion-input>
+
+          <button
+            type="button"
+            class="os-date-btn"
+            (click)="openCalendar($event, 'dataFinal'); $event.stopPropagation()">
+            <ion-icon name="calendar-clear-outline"></ion-icon>
+          </button>
+        </div>
+      </div>
+
+      <!-- Número Voucher -->
+      <div class="os-field">
+        <label class="os-label">Número Voucher</label>
+        <ion-input
+          class="os-input"
+          type="text"
+          [(ngModel)]="numeroVoucher">
+        </ion-input>
+      </div>
+
+      <!-- Botão Pesquisar dentro do card -->
+      <div class="os-actions">
+        <ion-button
+          expand="block"
+          class="os-search-btn"
+          (click)="pesquisar()">
+          PESQUISAR
+        </ion-button>
+      </div>
+
+    </div>
   </div>
 </ion-content>

@@ -23,7 +23,14 @@ export class AbastecimentoPostosEdicaoPage implements OnInit {
 
   ngOnInit() {}
 
-  async openCalendar(event: any, fieldName: 'dtRetirada' | 'hodometroData' | 'nCtlPostoData') {
+  onBack() {
+    this.router.navigate(['/tabs/abastecimento-postos-pesquisa']);
+  }
+
+  async openCalendar(
+    event: any,
+    fieldName: 'dtRetirada' | 'hodometroData' | 'nCtlPostoData'
+  ) {
     const popover = await this.popoverCtrl.create({
       component: CalendarPopoverComponent,
       event,
@@ -31,6 +38,7 @@ export class AbastecimentoPostosEdicaoPage implements OnInit {
       translucent: true,
       cssClass: 'calendar-popover'
     });
+
     await popover.present();
 
     const { data } = await popover.onDidDismiss();
@@ -47,7 +55,6 @@ export class AbastecimentoPostosEdicaoPage implements OnInit {
       return '';
     }
   }
-
 
   confirmar() {
     this.router.navigate(['/tabs/abastecimento-postos']);
